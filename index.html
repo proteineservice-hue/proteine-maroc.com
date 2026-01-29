@@ -80,13 +80,6 @@
             line-height: 1.6;
             font-weight: 400;
             overflow-x: hidden;
-            /* إضافة صورة خلفية للموقع */
-            background-image: linear-gradient(rgba(255, 255, 255, 0.95), rgba(255, 255, 255, 0.95)), 
-                            url('https://images.unsplash.com/photo-1534367507877-0edd93bd013b?ixlib=rb-4.0.3&auto=format&fit=crop&w=2000&q=80');
-            background-size: cover;
-            background-position: center;
-            background-attachment: fixed;
-            background-repeat: no-repeat;
         }
         
         h1, h2, h3, h4, h5 {
@@ -113,9 +106,6 @@
         
         section {
             padding: 80px 0;
-            background-color: rgba(255, 255, 255, 0.9);
-            border-radius: var(--radius);
-            margin: 20px 0;
         }
         
         /* Boutons améliorés */
@@ -323,32 +313,12 @@
         .search-result-img {
             width: 50px;
             height: 50px;
-            border-radius: 8px;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            overflow: hidden;
             background-color: #f0f0f0;
-        }
-        
-        /* إضافة شعار الموقع في نتائج البحث */
-        .search-result-img img {
-            width: 100%;
-            height: 100%;
-            object-fit: cover;
-            border-radius: 8px;
-        }
-        
-        .search-result-logo {
-            width: 100%;
-            height: 100%;
-            background: linear-gradient(135deg, var(--primary), var(--accent));
             border-radius: 8px;
             display: flex;
             align-items: center;
             justify-content: center;
-            color: white;
-            font-weight: 800;
+            color: var(--primary);
             font-size: 1.2rem;
         }
         
@@ -482,7 +452,6 @@
             text-align: center;
             position: relative;
             overflow: hidden;
-            border-radius: 0;
         }
         
         .hero:before {
@@ -551,7 +520,102 @@
             font-weight: 600;
         }
         
-        /* Section Produits avec filtres améliorés (أولاً بعد البطل) */
+        /* Section Catégories de prix */
+        .price-categories {
+            padding: 80px 0;
+            background-color: var(--light);
+        }
+        
+        .categories-container {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 30px;
+        }
+        
+        .price-category {
+            background-color: white;
+            border-radius: var(--radius);
+            padding: 40px;
+            text-align: center;
+            box-shadow: var(--shadow);
+            transition: var(--transition);
+            border: 3px solid transparent;
+            cursor: pointer;
+        }
+        
+        .price-category:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 20px 40px rgba(0, 0, 0, 0.1);
+        }
+        
+        .price-category.economique {
+            border-color: var(--economique);
+        }
+        
+        .price-category.moyen {
+            border-color: var(--moyen);
+        }
+        
+        .price-category.premium {
+            border-color: var(--premium);
+        }
+        
+        .category-icon {
+            width: 80px;
+            height: 80px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 2rem;
+            margin: 0 auto 25px;
+        }
+        
+        .economique .category-icon {
+            background-color: rgba(42, 157, 143, 0.1);
+            color: var(--economique);
+        }
+        
+        .moyen .category-icon {
+            background-color: rgba(252, 163, 17, 0.1);
+            color: var(--moyen);
+        }
+        
+        .premium .category-icon {
+            background-color: rgba(230, 57, 70, 0.1);
+            color: var(--premium);
+        }
+        
+        .price-category h3 {
+            font-size: 1.8rem;
+            margin-bottom: 15px;
+            color: var(--secondary);
+        }
+        
+        .price-category p {
+            color: var(--gray);
+            margin-bottom: 25px;
+        }
+        
+        .price-range {
+            font-size: 1.5rem;
+            font-weight: 700;
+            margin-bottom: 25px;
+        }
+        
+        .economique .price-range {
+            color: var(--economique);
+        }
+        
+        .moyen .price-range {
+            color: var(--moyen);
+        }
+        
+        .premium .price-range {
+            color: var(--premium);
+        }
+        
+        /* Section Produits avec filtres améliorés */
         .products-section {
             padding: 100px 0;
         }
@@ -737,7 +801,7 @@
             color: var(--dark);
         }
         
-        /* Grille de produits à 4 niveaux - 3 produits par ligne */
+        /* Grille de produits à 4 niveaux */
         .products-multilevel {
             display: flex;
             flex-direction: column;
@@ -806,10 +870,10 @@
             background-color: var(--dark);
         }
         
-        /* Grille de produits - 3 produits par ligne */
+        /* Grille de produits */
         .products-grid {
             display: grid;
-            grid-template-columns: repeat(3, 1fr); /* تغيير من auto-fill إلى 3 أعمدة ثابتة */
+            grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
             gap: 30px;
         }
         
@@ -822,7 +886,6 @@
             border: 2px solid transparent;
             position: relative;
             animation: float 6s ease-in-out infinite;
-            cursor: pointer;
         }
         
         /* Animation de flottement */
@@ -1019,240 +1082,7 @@
             margin-bottom: 15px;
         }
         
-        /* Modal pour تفاصيل المنتج */
-        .product-modal {
-            position: fixed;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            background-color: rgba(0, 0, 0, 0.8);
-            display: none;
-            justify-content: center;
-            align-items: center;
-            z-index: 2001;
-            padding: 20px;
-        }
-        
-        .product-modal.active {
-            display: flex;
-        }
-        
-        .product-modal-content {
-            background-color: white;
-            border-radius: var(--radius);
-            max-width: 900px;
-            width: 100%;
-            max-height: 90vh;
-            overflow-y: auto;
-            position: relative;
-            animation: modalFadeIn 0.3s ease;
-        }
-        
-        @keyframes modalFadeIn {
-            from { opacity: 0; transform: scale(0.9); }
-            to { opacity: 1; transform: scale(1); }
-        }
-        
-        .close-product-modal {
-            position: absolute;
-            top: 20px;
-            right: 20px;
-            background: none;
-            border: none;
-            font-size: 2rem;
-            color: var(--dark);
-            cursor: pointer;
-            z-index: 10;
-        }
-        
-        .product-modal-body {
-            display: flex;
-            flex-direction: column;
-            padding: 40px;
-        }
-        
-        @media (min-width: 992px) {
-            .product-modal-body {
-                flex-direction: row;
-                gap: 40px;
-            }
-        }
-        
-        .product-modal-image {
-            flex: 1;
-            min-height: 300px;
-            background-color: #f8f9fa;
-            border-radius: var(--radius);
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            padding: 30px;
-        }
-        
-        .product-modal-image img {
-            max-width: 100%;
-            max-height: 400px;
-            object-fit: contain;
-        }
-        
-        .product-modal-info {
-            flex: 1;
-        }
-        
-        .product-modal-category {
-            font-size: 1rem;
-            color: var(--gray);
-            margin-bottom: 10px;
-            text-transform: uppercase;
-            letter-spacing: 1px;
-        }
-        
-        .product-modal-name {
-            font-size: 2rem;
-            font-weight: 800;
-            margin-bottom: 20px;
-            color: var(--secondary);
-        }
-        
-        .product-modal-price {
-            font-size: 2.5rem;
-            font-weight: 800;
-            margin-bottom: 20px;
-        }
-        
-        .product-modal-description {
-            font-size: 1.1rem;
-            line-height: 1.8;
-            color: var(--dark);
-            margin-bottom: 30px;
-        }
-        
-        .product-modal-features {
-            background-color: var(--light);
-            border-radius: var(--radius);
-            padding: 25px;
-            margin-bottom: 30px;
-        }
-        
-        .product-modal-features h4 {
-            font-size: 1.2rem;
-            margin-bottom: 15px;
-            color: var(--secondary);
-        }
-        
-        .product-modal-features ul {
-            list-style-type: disc;
-            padding-left: 20px;
-        }
-        
-        .product-modal-features li {
-            margin-bottom: 10px;
-            color: var(--gray);
-        }
-        
-        .product-modal-actions {
-            display: flex;
-            gap: 15px;
-            flex-wrap: wrap;
-        }
-        
-        /* Section Catégories de prix (ثانياً) */
-        .price-categories {
-            padding: 80px 0;
-            background-color: var(--light);
-        }
-        
-        .categories-container {
-            display: grid;
-            grid-template-columns: repeat(3, 1fr);
-            gap: 30px;
-        }
-        
-        .price-category {
-            background-color: white;
-            border-radius: var(--radius);
-            padding: 40px;
-            text-align: center;
-            box-shadow: var(--shadow);
-            transition: var(--transition);
-            border: 3px solid transparent;
-            cursor: pointer;
-        }
-        
-        .price-category:hover {
-            transform: translateY(-10px);
-            box-shadow: 0 20px 40px rgba(0, 0, 0, 0.1);
-        }
-        
-        .price-category.economique {
-            border-color: var(--economique);
-        }
-        
-        .price-category.moyen {
-            border-color: var(--moyen);
-        }
-        
-        .price-category.premium {
-            border-color: var(--premium);
-        }
-        
-        .category-icon {
-            width: 80px;
-            height: 80px;
-            border-radius: 50%;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            font-size: 2rem;
-            margin: 0 auto 25px;
-        }
-        
-        .economique .category-icon {
-            background-color: rgba(42, 157, 143, 0.1);
-            color: var(--economique);
-        }
-        
-        .moyen .category-icon {
-            background-color: rgba(252, 163, 17, 0.1);
-            color: var(--moyen);
-        }
-        
-        .premium .category-icon {
-            background-color: rgba(230, 57, 70, 0.1);
-            color: var(--premium);
-        }
-        
-        .price-category h3 {
-            font-size: 1.8rem;
-            margin-bottom: 15px;
-            color: var(--secondary);
-        }
-        
-        .price-category p {
-            color: var(--gray);
-            margin-bottom: 25px;
-        }
-        
-        .price-range {
-            font-size: 1.5rem;
-            font-weight: 700;
-            margin-bottom: 25px;
-        }
-        
-        .economique .price-range {
-            color: var(--economique);
-        }
-        
-        .moyen .price-range {
-            color: var(--moyen);
-        }
-        
-        .premium .price-range {
-            color: var(--premium);
-        }
-        
-        /* Section Services Professionnels - 3 صور لكل خدمة (ثالثاً) */
+        /* Section Services Professionnels */
         .services-section {
             padding: 100px 0;
             background-color: var(--light);
@@ -1276,32 +1106,6 @@
         .service-card:hover {
             transform: translateY(-10px);
             box-shadow: 0 20px 40px rgba(0, 0, 0, 0.15);
-        }
-        
-        /* 3 صور لكل خدمة */
-        .service-images-container {
-            display: flex;
-            height: 200px;
-            position: relative;
-            overflow: hidden;
-        }
-        
-        .service-image {
-            flex: 1;
-            height: 100%;
-            overflow: hidden;
-            position: relative;
-        }
-        
-        .service-image img {
-            width: 100%;
-            height: 100%;
-            object-fit: cover;
-            transition: transform 0.5s ease;
-        }
-        
-        .service-card:hover .service-image img {
-            transform: scale(1.1);
         }
         
         .service-header {
@@ -1393,7 +1197,7 @@
             color: var(--service-5);
         }
         
-        /* Section Avantages (رابعاً) */
+        /* Section Avantages */
         .advantages-section {
             background-color: var(--light);
             padding: 80px 0;
@@ -1564,7 +1368,6 @@
             background-color: var(--dark);
             color: white;
             padding: 80px 0 30px;
-            border-radius: 0;
         }
         
         .footer-container {
@@ -1689,10 +1492,6 @@
             .footer-container {
                 grid-template-columns: repeat(2, 1fr);
             }
-            
-            .products-grid {
-                grid-template-columns: repeat(2, 1fr); /* 2 منتجات في الصف على الشاشات المتوسطة */
-            }
         }
         
         @media (max-width: 992px) {
@@ -1758,10 +1557,6 @@
             .cart-content {
                 width: 350px;
             }
-            
-            .products-grid {
-                grid-template-columns: repeat(2, 1fr); /* 2 منتجات في الصف على الشاشات الصغيرة */
-            }
         }
         
         @media (max-width: 768px) {
@@ -1786,7 +1581,7 @@
             }
             
             .products-grid {
-                grid-template-columns: 1fr; /* 1 منتج في الصف على الشاشات الصغيرة جداً */
+                grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
             }
             
             .price-inputs {
@@ -1844,15 +1639,6 @@
             .product-actions .btn {
                 width: 100%;
             }
-            
-            .service-images-container {
-                flex-direction: column;
-                height: auto;
-            }
-            
-            .service-image {
-                height: 150px;
-            }
         }
     </style>
 </head>
@@ -1888,16 +1674,6 @@
             </nav>
         </div>
     </header>
-
-    <!-- Modal لتفاصيل المنتج -->
-    <div class="product-modal" id="product-modal">
-        <div class="product-modal-content">
-            <button class="close-product-modal">&times;</button>
-            <div class="product-modal-body" id="product-modal-body">
-                <!-- محتوى تفاصيل المنتج سيتم إضافته بواسطة JavaScript -->
-            </div>
-        </div>
-    </div>
 
     <!-- Boutons flottants -->
     <div class="floating-buttons">
@@ -1958,7 +1734,49 @@
         </div>
     </section>
 
-    <!-- Section Produits avec filtres améliorés (أولاً بعد البطل) -->
+    <!-- Section Catégories de prix -->
+    <section class="price-categories">
+        <div class="container">
+            <div class="section-title">
+                <h2>POUR TOUS LES BUDGETS</h2>
+                <p>Nous avons des produits adaptés à toutes les bourses, de l'économique au premium</p>
+            </div>
+            
+            <div class="categories-container">
+                <div class="price-category economique" id="economique-category">
+                    <div class="category-icon">
+                        <i class="fas fa-coins"></i>
+                    </div>
+                    <h3>ÉCONOMIQUE</h3>
+                    <p>Des produits de qualité à prix abordables pour ceux qui veulent commencer sans se ruiner.</p>
+                    <div class="price-range">À partir de 99 MAD</div>
+                    <div class="btn btn-small btn-economique">Voir les produits économiques</div>
+                </div>
+                
+                <div class="price-category moyen" id="moyen-category">
+                    <div class="category-icon">
+                        <i class="fas fa-chart-line"></i>
+                    </div>
+                    <h3>MOYENNE GAMME</h3>
+                    <p>Le meilleur rapport qualité/prix avec des marques reconnues et une efficacité prouvée.</p>
+                    <div class="price-range">300 - 700 MAD</div>
+                    <div class="btn btn-small btn-moyen">Voir les produits moyen gamme</div>
+                </div>
+                
+                <div class="price-category premium" id="premium-category">
+                    <div class="category-icon">
+                        <i class="fas fa-crown"></i>
+                    </div>
+                    <h3>PREMIUM</h3>
+                    <p>Des produits haut de gamme pour des résultats optimaux. Pour les plus exigeants.</p>
+                    <div class="price-range">À partir de 800 MAD</div>
+                    <div class="btn btn-small btn-premium">Voir les produits premium</div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Section Produits avec filtres améliorés -->
     <section class="products-section" id="products">
         <div class="container">
             <div class="section-title">
@@ -2042,49 +1860,7 @@
         </div>
     </section>
 
-    <!-- Section Catégories de prix (ثانياً) -->
-    <section class="price-categories">
-        <div class="container">
-            <div class="section-title">
-                <h2>POUR TOUS LES BUDGETS</h2>
-                <p>Nous avons des produits adaptés à toutes les bourses, de l'économique au premium</p>
-            </div>
-            
-            <div class="categories-container">
-                <div class="price-category economique" id="economique-category">
-                    <div class="category-icon">
-                        <i class="fas fa-coins"></i>
-                    </div>
-                    <h3>ÉCONOMIQUE</h3>
-                    <p>Des produits de qualité à prix abordables pour ceux qui veulent commencer sans se ruiner.</p>
-                    <div class="price-range">À partir de 99 MAD</div>
-                    <div class="btn btn-small btn-economique">Voir les produits économiques</div>
-                </div>
-                
-                <div class="price-category moyen" id="moyen-category">
-                    <div class="category-icon">
-                        <i class="fas fa-chart-line"></i>
-                    </div>
-                    <h3>MOYENNE GAMME</h3>
-                    <p>Le meilleur rapport qualité/prix avec des marques reconnues et une efficacité prouvée.</p>
-                    <div class="price-range">300 - 700 MAD</div>
-                    <div class="btn btn-small btn-moyen">Voir les produits moyen gamme</div>
-                </div>
-                
-                <div class="price-category premium" id="premium-category">
-                    <div class="category-icon">
-                        <i class="fas fa-crown"></i>
-                    </div>
-                    <h3>PREMIUM</h3>
-                    <p>Des produits haut de gamme pour des résultats optimaux. Pour les plus exigeants.</p>
-                    <div class="price-range">À partir de 800 MAD</div>
-                    <div class="btn btn-small btn-premium">Voir les produits premium</div>
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <!-- Section Services Professionnels (ثالثاً) -->
+    <!-- Section Services Professionnels -->
     <section class="services-section" id="services">
         <div class="container">
             <div class="section-title">
@@ -2098,7 +1874,7 @@
         </div>
     </section>
 
-    <!-- Section Avantages (رابعاً) -->
+    <!-- Section Avantages -->
     <section class="advantages-section" id="advantages">
         <div class="container">
             <div class="section-title">
@@ -2174,7 +1950,7 @@
         </div>
     </section>
 
-    <!-- Footer amélioré (في النهاية) -->
+    <!-- Footer amélioré -->
     <footer id="contact">
         <div class="container">
             <div class="footer-container">
@@ -2232,1624 +2008,66 @@
     </footer>
 
     <script>
-        // قاعدة بيانات المنتجات مع 20 منتج لكل فئة سعرية
+        // Base de données complète des produits (52 produits - 4 niveaux)
         const allProducts = [
-            // Niveau 1: Produits Économiques (20 produits)
-            // يمكن زيادة السعر إلى 219 MAD لجعله أكثر ربحية
-            { 
-                id: 1, 
-                name: "Whey Protein Économique 500g", 
-                price: 199, 
-                priceText: "199 MAD", 
-                category: "whey", 
-                priceCategory: "economique", 
-                description: "Protéine de lactosérum basique, idéale pour débutants", 
-                image: "img/products/image1.jpg", // تغيير اسم الصورة
-                outOfStock: false, 
-                level: 1,
-                features: [
-                    "22g de protéines par portion",
-                    "Faible en glucides et lipides",
-                    "Digestion facile",
-                    "Idéal pour les débutants",
-                    "Mélange facile avec l'eau ou le lait"
-                ],
-                details: "Cette protéine whey économique est parfaite pour ceux qui commencent leur parcours fitness. Elle offre une source de protéines de qualité à un prix très abordable."
-            },
-            // يمكن إضافة خصم عند شراء كميات كبيرة
-            { 
-                id: 2, 
-                name: "Créatine Monohydrate 250g", 
-                price: 129, 
-                priceText: "129 MAD", 
-                category: "creatine", 
-                priceCategory: "economique", 
-                description: "Créatine pure pour augmenter la force et la masse musculaire", 
-                image: "img/products/image2.jpg", // تغيير اسم الصورة
-                outOfStock: false, 
-                level: 1,
-                features: [
-                    "Augmente la force musculaire",
-                    "Améliore la récupération",
-                    "Sans additifs",
-                    "Poudre pure à 100%",
-                    "Augmente les réserves d'énergie"
-                ],
-                details: "La créatine monohydrate est le supplément sportif le plus étudié et le plus efficace pour augmenter la force, la puissance et la masse musculaire."
-            },
-            // يمكن إضافة عرض خاص مع شراء BCAA وبروتين معاً
-            { 
-                id: 3, 
-                name: "BCAA 2:1:1 200g", 
-                price: 149, 
-                priceText: "149 MAD", 
-                category: "bcaa", 
-                priceCategory: "economique", 
-                description: "Acides aminés essentiels pour la récupération", 
-                image: "img/products/image3.jpg", // تغيير اسم الصورة
-                outOfStock: false, 
-                level: 1,
-                features: [
-                    "Ratio 2:1:1 optimal",
-                    "Réduit la fatigue musculaire",
-                    "Favorise la récupération",
-                    "Prévient le catabolisme",
-                    "Sans colorants artificiels"
-                ],
-                details: "Les BCAA sont des acides aminés essentiels qui aident à réduire la fatigue musculaire et à améliorer la récupération après l'entraînement."
-            },
-            { 
-                id: 4, 
-                name: "Vitamine C 500mg 60 comprimés", 
-                price: 99, 
-                priceText: "99 MAD", 
-                category: "vitamins", 
-                priceCategory: "economique", 
-                description: "Vitamine C pour renforcer l'immunité et la récupération", 
-                image: "img/products/image4.jpg", // تغيير اسم الصورة
-                outOfStock: false, 
-                level: 1,
-                features: [
-                    "500mg de vitamine C par comprimé",
-                    "Renforce le système immunitaire",
-                    "Antioxydant puissant",
-                    "Favorise la synthèse du collagène",
-                    "Aide à réduire le stress oxydatif"
-                ],
-                details: "La vitamine C est un antioxydant essentiel qui soutient le système immunitaire et aide à la récupération musculaire."
-            },
-            { 
-                id: 5, 
-                name: "Protéine de Soja 500g", 
-                price: 179, 
-                priceText: "179 MAD", 
-                category: "whey", 
-                priceCategory: "economique", 
-                description: "Protéine végétale économique pour végétariens", 
-                image: "img/products/image5.jpg", // تغيير اسم الصورة
-                outOfStock: false, 
-                level: 1,
-                features: [
-                    "Protéine végétale complète",
-                    "Sans lactose",
-                    "Faible en gras",
-                    "Idéal pour végétariens",
-                    "Facile à digérer"
-                ],
-                details: "La protéine de soja est une excellente alternative végétale pour ceux qui cherchent une source de protéines sans produits animaux."
-            },
-            { 
-                id: 6, 
-                name: "Complexe Multivitaminé", 
-                price: 159, 
-                priceText: "159 MAD", 
-                category: "vitamins", 
-                priceCategory: "economique", 
-                description: "Multivitamines complètes pour sportifs", 
-                image: "img/products/image6.jpg", // تغيير اسم الصورة
-                outOfStock: false, 
-                level: 1,
-                features: [
-                    "13 vitamines essentielles",
-                    "11 minéraux importants",
-                    "Formulé pour les sportifs",
-                    "Renforce l'immunité",
-                    "Améliore l'énergie"
-                ],
-                details: "Ce complexe multivitaminé fournit tous les nutriments essentiels dont votre corps a besoin pour fonctionner de manière optimale."
-            },
-            { 
-                id: 7, 
-                name: "Gainer Économique 1kg", 
-                price: 249, 
-                priceText: "249 MAD", 
-                category: "mass", 
-                priceCategory: "economique", 
-                description: "Gain de masse à petit prix avec glucides et protéines", 
-                image: "img/products/image7.jpg", // تغيير اسم الصورة
-                outOfStock: false, 
-                level: 1,
-                features: [
-                    "Ratio protéines/glucides équilibré",
-                    "Calories élevées pour la prise de masse",
-                    "Vitamines ajoutées",
-                    "Goût chocolat ou vanille",
-                    "Facile à mélanger"
-                ],
-                details: "Ce gainer économique est parfait pour ceux qui cherchent à prendre du poids et de la masse musculaire sans se ruiner."
-            },
-            { 
-                id: 8, 
-                name: "Caféine 200mg 90 capsules", 
-                price: 119, 
-                priceText: "119 MAD", 
-                category: "preworkout", 
-                priceCategory: "economique", 
-                description: "Caféine pure pour l'énergie et la concentration", 
-                image: "img/products/image8.jpg", // تغيير اسم الصورة
-                outOfStock: false, 
-                level: 1,
-                features: [
-                    "200mg de caféine par capsule",
-                    "Augmente l'énergie",
-                    "Améliore la concentration",
-                    "Stimule le métabolisme",
-                    "Aide à brûler les graisses"
-                ],
-                details: "La caféine pure est un stimulant efficace qui augmente l'énergie, améliore la concentration et peut aider à brûler les graisses."
-            },
-            { 
-                id: 9, 
-                name: "Zinc 50mg 100 capsules", 
-                price: 89, 
-                priceText: "89 MAD", 
-                category: "vitamins", 
-                priceCategory: "economique", 
-                description: "Zinc pour l'immunité et la testostérone", 
-                image: "img/products/image9.jpg", // تغيير اسم الصورة
-                outOfStock: false, 
-                level: 1,
-                features: [
-                    "50mg de zinc par capsule",
-                    "Soutien immunitaire",
-                    "Favorise la synthèse de testostérone",
-                    "Antioxydant",
-                    "Santé de la peau"
-                ],
-                details: "Le zinc est un minéral essentiel qui soutient le système immunitaire et participe à la production de testostérone."
-            },
-            { 
-                id: 10, 
-                name: "Magnésium 400mg 90 comprimés", 
-                price: 109, 
-                priceText: "109 MAD", 
-                category: "vitamins", 
-                priceCategory: "economique", 
-                description: "Magnésium pour la relaxation musculaire et nerveuse", 
-                image: "img/products/image10.jpg", // تغيير اسم الصورة
-                outOfStock: false, 
-                level: 1,
-                features: [
-                    "400mg de magnésium par comprimé",
-                    "Réduit les crampes musculaires",
-                    "Favorise la relaxation",
-                    "Améliore le sommeil",
-                    "Soutien osseux"
-                ],
-                details: "Le magnésium est essentiel pour la relaxation musculaire, la réduction des crampes et un sommeil de qualité."
-            },
-            { 
-                id: 11, 
-                name: "Protéine d'Œuf 500g", 
-                price: 229, 
-                priceText: "229 MAD", 
-                category: "whey", 
-                priceCategory: "economique", 
-                description: "Protéine complète d'œuf en poudre", 
-                image: "img/products/image11.jpg", // تغيير اسم الصورة
-                outOfStock: false, 
-                level: 1,
-                features: [
-                    "Protéine d'œuf complète",
-                    "Biodisponibilité élevée",
-                    "Sans lactose",
-                    "Faible en glucides",
-                    "Longue digestion"
-                ],
-                details: "La protéine d'œuf est une protéine complète avec un excellent profil d'acides aminés et une haute biodisponibilité."
-            },
-            { 
-                id: 12, 
-                name: "Créatine Kre-Alkalyn 120 capsules", 
-                price: 269, 
-                priceText: "269 MAD", 
-                category: "creatine", 
-                priceCategory: "economique", 
-                description: "Créatine tamponnée sans ballonnement", 
-                image: "img/products/image12.jpg", // تغيير اسم الصورة
-                outOfStock: false, 
-                level: 1,
-                features: [
-                    "Créatine tamponnée pH correct",
-                    "Pas de ballonnement",
-                    "Pas de phase de chargement",
-                    "Capsules faciles à prendre",
-                    "Absorption optimale"
-                ],
-                details: "La créatine Kre-Alkalyn est tamponnée pour éviter les problèmes de ballonnement et ne nécessite pas de phase de chargement."
-            },
-            { 
-                id: 13, 
-                name: "L-Carnitine 1000mg 60 capsules", 
-                price: 189, 
-                priceText: "189 MAD", 
-                category: "fatburner", 
-                priceCategory: "economique", 
-                description: "L-Carnitine pour le transport des graisses", 
-                image: "img/products/image13.jpg", // تغيير اسم الصورة
-                outOfStock: false, 
-                level: 1,
-                features: [
-                    "1000mg de L-Carnitine par capsule",
-                    "Transporte les graisses vers les mitochondries",
-                    "Améliore l'endurance",
-                    "Soutien la perte de graisse",
-                    "Augmente l'énergie"
-                ],
-                details: "La L-Carnitine aide à transporter les acides gras vers les mitochondries où ils sont brûlés pour produire de l'énergie."
-            },
-            { 
-                id: 14, 
-                name: "Vitamine D3 2000UI 120 capsules", 
-                price: 149, 
-                priceText: "149 MAD", 
-                category: "vitamins", 
-                priceCategory: "economique", 
-                description: "Vitamine D3 pour la santé osseuse et immunitaire", 
-                image: "img/products/image14.jpg", // تغيير اسم الصورة
-                outOfStock: false, 
-                level: 1,
-                features: [
-                    "2000 UI de vitamine D3 par capsule",
-                    "Soutien immunitaire",
-                    "Santé osseuse",
-                    "Améliore l'humeur",
-                    "Forme hautement absorbable"
-                ],
-                details: "La vitamine D3 est essentielle pour la santé osseuse, le système immunitaire et peut améliorer l'humeur."
-            },
-            { 
-                id: 15, 
-                name: "Protéine de Riz 500g", 
-                price: 199, 
-                priceText: "199 MAD", 
-                category: "vegan", 
-                priceCategory: "economique", 
-                description: "Protéine végétale hypoallergénique", 
-                image: "img/products/image15.jpg", // تغيير اسم الصورة
-                outOfStock: false, 
-                level: 1,
-                features: [
-                    "Protéine de riz brun",
-                    "Hypoallergénique",
-                    "Sans gluten",
-                    "Vegan friendly",
-                    "Facile à digérer"
-                ],
-                details: "La protéine de riz est une excellente option hypoallergénique pour ceux qui ont des sensibilités alimentaires."
-            },
-            { 
-                id: 16, 
-                name: "Arginine 1000mg 120 capsules", 
-                price: 179, 
-                priceText: "179 MAD", 
-                category: "preworkout", 
-                priceCategory: "economique", 
-                description: "Arginine pour la pompe musculaire et la circulation", 
-                image: "img/products/image16.jpg", // تغيير اسم الصورة
-                outOfStock: false, 
-                level: 1,
-                features: [
-                    "1000mg d'arginine par capsule",
-                    "Améliore la circulation sanguine",
-                    "Augmente la pompe musculaire",
-                    "Soutien la récupération",
-                    "Précurseur d'oxyde nitrique"
-                ],
-                details: "L'arginine est un précurseur de l'oxyde nitrique qui améliore la circulation sanguine et la pompe musculaire."
-            },
-            { 
-                id: 17, 
-                name: "Oméga-3 1000mg 90 capsules", 
-                price: 169, 
-                priceText: "169 MAD", 
-                category: "vitamins", 
-                priceCategory: "economique", 
-                description: "Acides gras essentiels pour la santé cardiovasculaire", 
-                image: "img/products/image17.jpg", // تغيير اسم الصورة
-                outOfStock: false, 
-                level: 1,
-                features: [
-                    "1000mg d'huile de poisson par capsule",
-                    "EPA et DHA",
-                    "Santé cardiovasculaire",
-                    "Soutien cérébral",
-                    "Anti-inflammatoire"
-                ],
-                details: "Les oméga-3 sont des acides gras essentiels qui soutiennent la santé cardiovasculaire, cérébrale et ont des propriétés anti-inflammatoires."
-            },
-            { 
-                id: 18, 
-                name: "Beta-Alanine 500g", 
-                price: 219, 
-                priceText: "219 MAD", 
-                category: "preworkout", 
-                priceCategory: "economique", 
-                description: "Beta-Alanine pour l'endurance musculaire", 
-                image: "img/products/image18.jpg", // تغيير اسم الصورة
-                outOfStock: false, 
-                level: 1,
-                features: [
-                    "Augmente les niveaux de carnosine",
-                    "Améliore l'endurance",
-                    "Réduit la fatigue",
-                    "Permet des séances plus longues",
-                    "Poudre facile à mélanger"
-                ],
-                details: "La bêta-alanine augmente les niveaux de carnosine musculaire, ce qui améliore l'endurance et réduit la fatigue."
-            },
-            { 
-                id: 19, 
-                name: "Collagène 300g", 
-                price: 239, 
-                priceText: "239 MAD", 
-                category: "vitamins", 
-                priceCategory: "economique", 
-                description: "Collagène pour la santé des articulations et de la peau", 
-                image: "img/products/image19.jpg", // تغيير اسم الصورة
-                outOfStock: false, 
-                level: 1,
-                features: [
-                    "Type I et III de collagène",
-                    "Soutien articulaire",
-                    "Santé de la peau",
-                    "Renforce les cheveux et ongles",
-                    "Facile à mélanger"
-                ],
-                details: "Le collagène soutient la santé des articulations, améliore l'élasticité de la peau et renforce les cheveux et les ongles."
-            },
-            { 
-                id: 20, 
-                name: "Tribulus Terrestris 500mg 90 capsules", 
-                price: 159, 
-                priceText: "159 MAD", 
-                category: "testobooster", 
-                priceCategory: "economique", 
-                description: "Tribulus pour le soutien hormonal naturel", 
-                image: "img/products/image20.jpg", // تغيير اسم الصورة
-                outOfStock: false, 
-                level: 1,
-                features: [
-                    "500mg de Tribulus par capsule",
-                    "Soutien la testostérone naturelle",
-                    "Améliore la libido",
-                    "Augmente l'énergie",
-                    "Soutien la performance"
-                ],
-                details: "Le Tribulus Terrestris est une plante traditionnellement utilisée pour soutenir les niveaux de testostérone naturelle et améliorer la libido."
-            },
+            // Niveau 1: Produits Économiques (1-12)
+            { id: 1, name: "Whey Protein Économique 500g", price: 199, priceText: "199 MAD", category: "whey", priceCategory: "economique", description: "Protéine de lactosérum basique, idéale pour débutants", image: "https://via.placeholder.com/300x300/2a9d8f/fff?text=Whey+Eco", outOfStock: false, level: 1 },
+            { id: 2, name: "Créatine Monohydrate 250g", price: 129, priceText: "129 MAD", category: "creatine", priceCategory: "economique", description: "Créatine pure pour augmenter la force", image: "https://via.placeholder.com/300x300/2a9d8f/fff?text=Créatine", outOfStock: false, level: 1 },
+            { id: 3, name: "BCAA 2:1:1 200g", price: 149, priceText: "149 MAD", category: "bcaa", priceCategory: "economique", description: "Acides aminés essentiels pour la récupération", image: "https://via.placeholder.com/300x300/2a9d8f/fff?text=BCAA", outOfStock: false, level: 1 },
+            { id: 4, name: "Vitamine C 500mg 60 comprimés", price: 99, priceText: "99 MAD", category: "vitamins", priceCategory: "economique", description: "Vitamine C pour renforcer l'immunité", image: "https://via.placeholder.com/300x300/2a9d8f/fff?text=Vit+C", outOfStock: false, level: 1 },
+            { id: 5, name: "Protéine de Soja 500g", price: 179, priceText: "179 MAD", category: "whey", priceCategory: "economique", description: "Protéine végétale économique", image: "https://via.placeholder.com/300x300/2a9d8f/fff?text=Soja", outOfStock: false, level: 1 },
+            { id: 6, name: "Complexe Multivitaminé", price: 159, priceText: "159 MAD", category: "vitamins", priceCategory: "economique", description: "Multivitamines complètes quotidiennes", image: "https://via.placeholder.com/300x300/2a9d8f/fff?text=Multi", outOfStock: false, level: 1 },
+            { id: 7, name: "Gainer Économique 1kg", price: 249, priceText: "249 MAD", category: "mass", priceCategory: "economique", description: "Gain de masse à petit prix", image: "https://via.placeholder.com/300x300/2a9d8f/fff?text=Gainer", outOfStock: false, level: 1 },
+            { id: 8, name: "Caféine 200mg 90 capsules", price: 119, priceText: "119 MAD", category: "preworkout", priceCategory: "economique", description: "Caféine pure pour l'énergie", image: "https://via.placeholder.com/300x300/2a9d8f/fff?text=Caféine", outOfStock: false, level: 1 },
+            { id: 29, name: "Zinc 50mg 100 capsules", price: 89, priceText: "89 MAD", category: "vitamins", priceCategory: "economique", description: "Zinc pour l'immunité et la testostérone", image: "https://via.placeholder.com/300x300/2a9d8f/fff?text=Zinc", outOfStock: false, level: 1 },
+            { id: 30, name: "Magnésium 400mg", price: 109, priceText: "109 MAD", category: "vitamins", priceCategory: "economique", description: "Magnésium pour la relaxation musculaire", image: "https://via.placeholder.com/300x300/2a9d8f/fff?text=Magnésium", outOfStock: false, level: 1 },
+            { id: 31, name: "Protéine d'Œuf 500g", price: 229, priceText: "229 MAD", category: "whey", priceCategory: "economique", description: "Protéine complète d'œuf en poudre", image: "https://via.placeholder.com/300x300/2a9d8f/fff?text=Œuf", outOfStock: false, level: 1 },
+            { id: 32, name: "Créatine Kre-Alkalyn 120 capsules", price: 269, priceText: "269 MAD", category: "creatine", priceCategory: "economique", description: "Créatine tamponnée sans ballonnement", image: "https://via.placeholder.com/300x300/2a9d8f/fff?text=Kre-Alkalyn", outOfStock: false, level: 1 },
             
-            // Niveau 2: Produits Moyenne Gamme (20 produits)
-            // يمكن زيادة السعر إلى 549 MAD
-            { 
-                id: 21, 
-                name: "Whey Gold Standard 1kg", 
-                price: 499, 
-                priceText: "499 MAD", 
-                category: "whey", 
-                priceCategory: "moyen", 
-                description: "La protéine la plus vendue au monde", 
-                image: "img/products/image21.jpg", // تغيير اسم الصورة
-                outOfStock: false, 
-                level: 2,
-                features: [
-                    "24g de protéines par portion",
-                    "5.5g de BCAA",
-                    "Faible en lactose",
-                    "Plus de 20 saveurs disponibles",
-                    "Certifié pour les sportifs"
-                ],
-                details: "Optimum Nutrition Gold Standard Whey est la protéine whey la plus vendue au monde. Elle offre un profil d'acides aminés complet et une excellente solubilité."
-            },
-            { 
-                id: 22, 
-                name: "Créatine Monohydrate 500g", 
-                price: 329, 
-                priceText: "329 MAD", 
-                category: "creatine", 
-                priceCategory: "moyen", 
-                description: "Créatine de haute qualité micronisée", 
-                image: "img/products/image22.jpg", // تغيير اسم الصورة
-                outOfStock: false, 
-                level: 2,
-                features: [
-                    "Créatine micronisée",
-                    "99,9% pure",
-                    "Mélange facile",
-                    "Pas d'impuretés",
-                    "Certifié Creapure"
-                ],
-                details: "Cette créatine monohydrate de haute qualité est micronisée pour une meilleure solubilité et absorption."
-            },
-            { 
-                id: 23, 
-                name: "BCAA 8:1:1 400g", 
-                price: 399, 
-                priceText: "399 MAD", 
-                category: "bcaa", 
-                priceCategory: "moyen", 
-                description: "Ratio optimisé 8:1:1 pour la croissance", 
-                image: "img/products/image23.jpg", // تغيير اسم الصورة
-                outOfStock: false, 
-                level: 2,
-                features: [
-                    "Ratio 8:1:1 leucine/isoleucine/valine",
-                    "Stimule la synthèse protéique",
-                    "Réduit le catabolisme",
-                    "Saveurs fruitées",
-                    "Instantanéisé"
-                ],
-                details: "Les BCAA avec un ratio 8:1:1 offrent une concentration plus élevée en leucine, l'acide aminé le plus important pour la synthèse protéique."
-            },
-            { 
-                id: 24, 
-                name: "Mass Gainer 3kg", 
-                price: 599, 
-                priceText: "599 MAD", 
-                category: "mass", 
-                priceCategory: "moyen", 
-                description: "Gain de masse avec glucides complexes", 
-                image: "img/products/image24.jpg", // تغيير اسم الصورة
-                outOfStock: false, 
-                level: 2,
-                features: [
-                    "1250 calories par portion",
-                    "50g de protéines",
-                    "Glucides complexes",
-                    "Enzymes digestives",
-                    "Vitamines et minéraux"
-                ],
-                details: "Ce mass gainer de qualité moyenne gamme offre un apport calorique élevé avec des glucides complexes pour une prise de masse propre."
-            },
-            { 
-                id: 25, 
-                name: "Pre-Workout Extreme", 
-                price: 449, 
-                priceText: "449 MAD", 
-                category: "preworkout", 
-                priceCategory: "moyen", 
-                description: "Formule énergisante complète avant l'entraînement", 
-                image: "img/products/image25.jpg", // تغيير اسم الصورة
-                outOfStock: false, 
-                level: 2,
-                features: [
-                    "Caféine anhydre",
-                    "Beta-Alanine",
-                    "Citrulline Malate",
-                    "Betaine",
-                    "Focus mental amélioré"
-                ],
-                details: "Cette préparation pré-entraînement offre une énergie explosive, une endurance améliorée et une concentration mentale accrue."
-            },
-            { 
-                id: 26, 
-                name: "Vitamine D3 5000UI 120 capsules", 
-                price: 299, 
-                priceText: "299 MAD", 
-                category: "vitamins", 
-                priceCategory: "moyen", 
-                description: "Vitamine D haute puissance pour les sportifs", 
-                image: "img/products/image26.jpg", // تغيير اسم الصورة
-                outOfStock: false, 
-                level: 2,
-                features: [
-                    "5000 UI de vitamine D3",
-                    "Forme hautement absorbable",
-                    "Soutien immunitaire puissant",
-                    "Santé osseuse",
-                    "Humeur et bien-être"
-                ],
-                details: "Cette vitamine D3 haute puissance est spécialement formulée pour les sportifs qui ont des besoins accrus en vitamine D."
-            },
-            { 
-                id: 27, 
-                name: "Whey Isolate 1kg", 
-                price: 599, 
-                priceText: "599 MAD", 
-                category: "whey", 
-                priceCategory: "moyen", 
-                description: "Protéine isolée faible en lactose et en gras", 
-                image: "img/products/image27.jpg", // تغيير اسم الصورة
-                outOfStock: false, 
-                level: 2,
-                features: [
-                    "25g de protéines par portion",
-                    "Moins de 1g de lactose",
-                    "Faible en glucides et lipides",
-                    "Absorption rapide",
-                    "Saveurs variées"
-                ],
-                details: "La whey isolate est filtrée pour éliminer la plupart des graisses et du lactose, offrant une protéine plus pure et plus digeste."
-            },
-            { 
-                id: 28, 
-                name: "Glutamine 300g", 
-                price: 349, 
-                priceText: "349 MAD", 
-                category: "bcaa", 
-                priceCategory: "moyen", 
-                description: "Glutamine pour la récupération et l'immunité", 
-                image: "img/products/image28.jpg", // تغيير اسم الصورة
-                outOfStock: false, 
-                level: 2,
-                features: [
-                    "Glutamine pure micronisée",
-                    "Soutien la récupération musculaire",
-                    "Renforce le système immunitaire",
-                    "Santé intestinale",
-                    "Sans saveur, facile à mélanger"
-                ],
-                details: "La glutamine est l'acide aminé le plus abondant dans le corps et joue un rôle crucial dans la récupération musculaire et la fonction immunitaire."
-            },
-            { 
-                id: 29, 
-                name: "Protéine Caséine 1kg", 
-                price: 529, 
-                priceText: "529 MAD", 
-                category: "whey", 
-                priceCategory: "moyen", 
-                description: "Libération lente pour la nuit ou entre les repas", 
-                image: "img/products/image29.jpg", // تغيير اسم الصورة
-                outOfStock: false, 
-                level: 2,
-                features: [
-                    "Libération lente sur 7-8 heures",
-                    "Idéal avant le coucher",
-                    "Prévient le catabolisme nocturne",
-                    "Texture crémeuse",
-                    "Goût vanille ou chocolat"
-                ],
-                details: "La caséine est une protéine à libération lente, parfaite pour prendre avant le coucher pour nourrir les muscles toute la nuit."
-            },
-            { 
-                id: 30, 
-                name: "Omega 3-6-9 100 capsules", 
-                price: 279, 
-                priceText: "279 MAD", 
-                category: "vitamins", 
-                priceCategory: "moyen", 
-                description: "Acides gras essentiels complets", 
-                image: "img/products/image30.jpg", // تغيير اسم الصورة
-                outOfStock: false, 
-                level: 2,
-                features: [
-                    "Combinaison oméga 3, 6 et 9",
-                    "EPA et DHA concentrés",
-                    "Huile de lin et bourrache",
-                    "Santé cardiovasculaire",
-                    "Soutien articulaire"
-                ],
-                details: "Ce complément combine les trois types d'acides gras essentiels pour une approche complète de la santé cardiovasculaire et articulaire."
-            },
-            { 
-                id: 31, 
-                name: "EAA 400g", 
-                price: 459, 
-                priceText: "459 MAD", 
-                category: "bcaa", 
-                priceCategory: "moyen", 
-                description: "Acides aminés essentiels complets", 
-                image: "img/products/image31.jpg", // تغيير اسم الصورة
-                outOfStock: false, 
-                level: 2,
-                features: [
-                    "9 acides aminés essentiels",
-                    "Ratio optimal",
-                    "Stimule la synthèse protéique",
-                    "Hydrosoluble",
-                    "Saveurs fruitées"
-                ],
-                details: "Les EAA (Essential Amino Acids) contiennent les 9 acides aminés essentiels que le corps ne peut pas produire, essentiels pour la croissance musculaire."
-            },
-            { 
-                id: 32, 
-                name: "CLA 1000mg 180 capsules", 
-                price: 429, 
-                priceText: "429 MAD", 
-                category: "fatburner", 
-                priceCategory: "moyen", 
-                description: "Acide linoléique conjugué pour la perte de graisse", 
-                image: "img/products/image32.jpg", // تغيير اسم الصورة
-                outOfStock: false, 
-                level: 2,
-                features: [
-                    "1000mg de CLA par capsule",
-                    "Réduction de la masse grasse",
-                    "Préservation de la masse musculaire",
-                    "Améliore la composition corporelle",
-                    "Soutien métabolique"
-                ],
-                details: "Le CLA aide à réduire la masse grasse tout en préservant la masse musculaire, améliorant ainsi la composition corporelle."
-            },
-            { 
-                id: 33, 
-                name: "Citrulline Malate 300g", 
-                price: 389, 
-                priceText: "389 MAD", 
-                category: "preworkout", 
-                priceCategory: "moyen", 
-                description: "Citrulline Malate pour la pompe et l'endurance", 
-                image: "img/products/image33.jpg", // تغيير اسم الصورة
-                outOfStock: false, 
-                level: 2,
-                features: [
-                    "2:1 ratio Citrulline:Malate",
-                    "Augmente l'oxyde nitrique",
-                    "Améliore la pompe musculaire",
-                    "Réduit la fatigue",
-                    "Améliore l'endurance"
-                ],
-                details: "La citrulline malate augmente les niveaux d'arginine et d'oxyde nitrique, améliorant ainsi la circulation sanguine et la pompe musculaire."
-            },
-            { 
-                id: 34, 
-                name: "ZMA 90 capsules", 
-                price: 349, 
-                priceText: "349 MAD", 
-                category: "testobooster", 
-                priceCategory: "moyen", 
-                description: "Zinc, Magnésium et B6 pour la récupération et le sommeil", 
-                image: "img/products/image34.jpg", // تغيير اسم الصورة
-                outOfStock: false, 
-                level: 2,
-                features: [
-                    "Zinc monométhionine",
-                    "Magnésium aspartate",
-                    "Vitamine B6",
-                    "Améliore le sommeil",
-                    "Soutien la testostérone"
-                ],
-                details: "Le ZMA est une combinaison de zinc, magnésium et vitamine B6 qui améliore la récupération, le sommeil et soutient les niveaux de testostérone."
-            },
-            { 
-                id: 35, 
-                name: "Protéine Végétale Bio 750g", 
-                price: 479, 
-                priceText: "479 MAD", 
-                category: "vegan", 
-                priceCategory: "moyen", 
-                description: "Mélange de protéines végétales biologiques", 
-                image: "img/products/image35.jpg", // تغيير اسم الصورة
-                outOfStock: false, 
-                level: 2,
-                features: [
-                    "Mélange pois, riz et chanvre",
-                    "Certifié biologique",
-                    "Profil d'acides aminés complet",
-                    "Sans OGM",
-                    "Vegan friendly"
-                ],
-                details: "Ce mélange de protéines végétales biologiques offre un profil d'acides aminés complet pour les végétaliens et végétariens."
-            },
-            { 
-                id: 36, 
-                name: "Carnitine 3000 500ml", 
-                price: 399, 
-                priceText: "399 MAD", 
-                category: "fatburner", 
-                priceCategory: "moyen", 
-                description: "L-Carnitine liquide pour une absorption rapide", 
-                image: "img/products/image36.jpg", // تغيير اسم الصورة
-                outOfStock: false, 
-                level: 2,
-                features: [
-                    "3000mg de L-Carnitine par dose",
-                    "Forme liquide pour absorption rapide",
-                    "Goût agréable",
-                    "Sans sucre",
-                    "Améliore l'endurance"
-                ],
-                details: "Cette L-Carnitine liquide offre une absorption rapide et est pratique à utiliser قبل l'entraînement pour améliorer l'endurance."
-            },
-            { 
-                id: 37, 
-                name: "Testo Booster Pro 120 capsules", 
-                price: 499, 
-                priceText: "499 MAD", 
-                category: "testobooster", 
-                priceCategory: "moyen", 
-                description: "Complexe avancé pour le soutien hormonal", 
-                image: "img/products/image37.jpg", // تغيير اسم الصورة
-                outOfStock: false, 
-                level: 2,
-                features: [
-                    "Tribulus, fenugrec, ashwagandha",
-                    "Réduction du cortisol",
-                    "Augmentation de la libido",
-                    "Plus d'énergie",
-                    "Améliore la récupération"
-                ],
-                details: "Ce complexe avancé combine plusieurs ingrédients pour soutenir les niveaux de testostérone, réduire le cortisol et améliorer l'énergie."
-            },
-            { 
-                id: 38, 
-                name: "Joint Support 120 capsules", 
-                price: 429, 
-                priceText: "429 MAD", 
-                category: "vitamins", 
-                priceCategory: "moyen", 
-                description: "Soutien articulaire complet pour les sportifs", 
-                image: "img/products/image38.jpg", // تغيير اسم الصورة
-                outOfStock: false, 
-                level: 2,
-                features: [
-                    "Glucosamine et chondroïtine",
-                    "MSM",
-                    "Curcumine",
-                    "Hyaluronique acide",
-                    "Soutien la mobilité"
-                ],
-                details: "Ce complément articulaire combine plusieurs ingrédients pour soutenir la santé des articulations, réduire l'inflammation et améliorer la mobilité."
-            },
-            { 
-                id: 39, 
-                name: "Fat Burner Thermogenic 120 capsules", 
-                price: 449, 
-                priceText: "449 MAD", 
-                category: "fatburner", 
-                priceCategory: "moyen", 
-                description: "Brûleur de graisse thermogénique", 
-                image: "img/products/image39.jpg", // تغيير اسم الصورة
-                outOfStock: false, 
-                level: 2,
-                features: [
-                    "Caféine verte",
-                    "Thé vert",
-                    "Capsicum",
-                    "Augmente le métabolisme",
-                    "Réduit l'appétit"
-                ],
-                details: "Ce brûleur de graisse thermogénique augmente la température corporelle et le métabolisme pour aider à brûler plus de calories."
-            },
-            { 
-                id: 40, 
-                name: "Night Protein 750g", 
-                price: 519, 
-                priceText: "519 MAD", 
-                category: "whey", 
-                priceCategory: "moyen", 
-                description: "Protéine à libération prolongée pour la nuit", 
-                image: "img/products/image40.jpg", // تغيير اسم الصورة
-                outOfStock: false, 
-                level: 2,
-                features: [
-                    "Mélange caséine micellaire et whey",
-                    "Libération sur 8 heures",
-                    "ZMA inclus",
-                    "Améliore le sommeil",
-                    "Goût vanille ou chocolat"
-                ],
-                details: "Cette protéine spéciale pour la nuit combine des protéines à libération lente avec du ZMA pour optimiser la récupération nocturne."
-            },
+            // Niveau 2: Produits Moyenne Gamme (13-24)
+            { id: 9, name: "Whey Gold Standard 1kg", price: 499, priceText: "499 MAD", category: "whey", priceCategory: "moyen", description: "La protéine la plus vendue au monde", image: "https://via.placeholder.com/300x300/fca311/000?text=Gold+Std", outOfStock: false, level: 2 },
+            { id: 10, name: "Créatine Monohydrate 500g", price: 329, priceText: "329 MAD", category: "creatine", priceCategory: "moyen", description: "Créatine de haute qualité", image: "https://via.placeholder.com/300x300/fca311/000?text=Créatine+MG", outOfStock: false, level: 2 },
+            { id: 11, name: "BCAA 8:1:1 400g", price: 399, priceText: "399 MAD", category: "bcaa", priceCategory: "moyen", description: "Ratio optimisé pour la croissance", image: "https://via.placeholder.com/300x300/fca311/000?text=BCAA+MG", outOfStock: false, level: 2 },
+            { id: 12, name: "Mass Gainer 3kg", price: 599, priceText: "599 MAD", category: "mass", priceCategory: "moyen", description: "Gain de masse avec glucides complexes", image: "https://via.placeholder.com/300x300/fca311/000?text=Mass+Gainer", outOfStock: false, level: 2 },
+            { id: 13, name: "Pre-Workout Extreme", price: 449, priceText: "449 MAD", category: "preworkout", priceCategory: "moyen", description: "Formule énergisante complète", image: "https://via.placeholder.com/300x300/fca311/000?text=Pre-Workout", outOfStock: false, level: 2 },
+            { id: 14, name: "Vitamine D3 5000UI", price: 299, priceText: "299 MAD", category: "vitamins", priceCategory: "moyen", description: "Vitamine D haute puissance", image: "https://via.placeholder.com/300x300/fca311/000?text=D3", outOfStock: false, level: 2 },
+            { id: 15, name: "Whey Isolate 1kg", price: 599, priceText: "599 MAD", category: "whey", priceCategory: "moyen", description: "Protéine isolée faible en lactose", image: "https://via.placeholder.com/300x300/fca311/000?text=Isolate", outOfStock: false, level: 2 },
+            { id: 16, name: "Glutamine 300g", price: 349, priceText: "349 MAD", category: "bcaa", priceCategory: "moyen", description: "Pour la récupération musculaire", image: "https://via.placeholder.com/300x300/fca311/000?text=Glutamine", outOfStock: false, level: 2 },
+            { id: 17, name: "Protéine Caséine 1kg", price: 529, priceText: "529 MAD", category: "whey", priceCategory: "moyen", description: "Libération lente pour la nuit", image: "https://via.placeholder.com/300x300/fca311/000?text=Caséine", outOfStock: false, level: 2 },
+            { id: 18, name: "Omega 3-6-9 100 capsules", price: 279, priceText: "279 MAD", category: "vitamins", priceCategory: "moyen", description: "Acides gras essentiels", image: "https://via.placeholder.com/300x300/fca311/000?text=Omega", outOfStock: false, level: 2 },
+            { id: 33, name: "EAA 400g", price: 459, priceText: "459 MAD", category: "bcaa", priceCategory: "moyen", description: "Acides aminés essentiels complets", image: "https://via.placeholder.com/300x300/fca311/000?text=EAA", outOfStock: false, level: 2 },
+            { id: 34, name: "CLA 1000mg 180 capsules", price: 429, priceText: "429 MAD", category: "preworkout", priceCategory: "moyen", description: "Acide linoléique conjugué pour la perte de graisse", image: "https://via.placeholder.com/300x300/fca311/000?text=CLA", outOfStock: false, level: 2 },
             
-            // Niveau 3: Produits Premium (20 produits)
-            // يمكن زيادة السعر إلى 749 MAD
-            { 
-                id: 41, 
-                name: "Créatine HCL 300g", 
-                price: 699, 
-                priceText: "699 MAD", 
-                category: "creatine", 
-                priceCategory: "premium", 
-                description: "Créatine hautement absorbable sans ballonnement", 
-                image: "img/products/image41.jpg", // تغيير اسم الصورة
-                outOfStock: false, 
-                level: 3,
-                features: [
-                    "Créatine hydrochloride",
-                    "38 fois plus soluble",
-                    "Pas de ballonnement",
-                    "Pas de phase de chargement",
-                    "Dosage réduit"
-                ],
-                details: "La créatine HCL est beaucoup plus soluble que la créatine monohydrate, permettant une absorption supérieure sans problèmes digestifs."
-            },
-            { 
-                id: 42, 
-                name: "BCAA Instantized 500g", 
-                price: 659, 
-                priceText: "659 MAD", 
-                category: "bcaa", 
-                priceCategory: "premium", 
-                description: "BCAA instantanés sans agglomération", 
-                image: "img/products/image42.jpg", // تغيير اسم الصورة
-                outOfStock: false, 
-                level: 3,
-                features: [
-                    "Instantanéisé pour une meilleure solubilité",
-                    "Ratio 2:1:1",
-                    "Sans agglomération",
-                    "Saveurs intenses",
-                    "Electrolytes ajoutés"
-                ],
-                details: "Ces BCAA instantanéisés se dissolvent parfaitement dans l'eau, offrant une boisson rafraîchissante sans résidu."
-            },
-            { 
-                id: 43, 
-                name: "Whey Hydrolysée 1.5kg", 
-                price: 899, 
-                priceText: "899 MAD", 
-                category: "whey", 
-                priceCategory: "premium", 
-                description: "Protéine prédigérée pour absorption rapide", 
-                image: "img/products/image43.jpg", // تغيير اسم الصورة
-                outOfStock: false, 
-                level: 3,
-                features: [
-                    "Whey hydrolysée enzymatiquement",
-                    "Absorption ultra-rapide",
-                    "30g de protéines par portion",
-                    "Sans lactose",
-                    "Idéale post-entraînement"
-                ],
-                details: "La whey hydrolysée est prédigérée par des enzymes, permettant une absorption encore plus rapide que la whey isolate."
-            },
-            { 
-                id: 44, 
-                name: "Testosterone Booster Elite", 
-                price: 779, 
-                priceText: "779 MAD", 
-                category: "testobooster", 
-                priceCategory: "premium", 
-                description: "Stimulateur naturel de testostérone avancé", 
-                image: "img/products/image44.jpg", // تغيير اسم الصورة
-                outOfStock: false, 
-                level: 3,
-                features: [
-                    "D-Aspartic Acid",
-                    "KSM-66 Ashwagandha",
-                    "Fenugreek 50% saponines",
-                    "Zinc chelaté",
-                    "Vitamine D3"
-                ],
-                details: "Ce booster de testostérone premium combine les ingrédients les plus efficaces pour soutenir les niveaux hormonaux naturels."
-            },
-            { 
-                id: 45, 
-                name: "Fat Burner Extreme", 
-                price: 699, 
-                priceText: "699 MAD", 
-                category: "fatburner", 
-                priceCategory: "premium", 
-                description: "Brûleur de graisse avancé avec technologie lipolytique", 
-                image: "img/products/image45.jpg", // تغيير اسم الصورة
-                outOfStock: false, 
-                level: 3,
-                features: [
-                    "Caféine anhydre 300mg",
-                    "Synéphrine",
-                    "Yohimbine",
-                    "Thé vert 50% EGCG",
-                    "Capsicum"
-                ],
-                details: "Ce brûleur de graisse avancé combine plusieurs ingrédients pour une action lipolytique puissante et une augmentation du métabolisme."
-            },
-            { 
-                id: 46, 
-                name: "Protéine Végétale Complète", 
-                price: 729, 
-                priceText: "729 MAD", 
-                category: "vegan", 
-                priceCategory: "premium", 
-                description: "Mélange premium de protéines végétales", 
-                image: "img/products/image46.jpg", // تغيير اسم الصورة
-                outOfStock: false, 
-                level: 3,
-                features: [
-                    "Pois, riz, quinoa, chanvre",
-                    "27g de protéines par portion",
-                    "BCAA ajoutés",
-                      "Enzymes digestives",
-                    "Sans OGM, bio"
-                ],
-                details: "Ce mélange premium de protéines végétales offre un profil d'acides aminés complet avec des enzymes digestives pour une meilleure assimilation."
-            },
-            { 
-                id: 47, 
-                name: "Recovery Complex", 
-                price: 849, 
-                priceText: "849 MAD", 
-                category: "bcaa", 
-                priceCategory: "premium", 
-                description: "Complexe de récupération avancé post-entraînement", 
-                image: "img/products/image47.jpg", // تغيير اسم الصورة
-                outOfStock: false, 
-                level: 3,
-                features: [
-                    "BCAA 2:1:1",
-                    "Glutamine",
-                    "Taurine",
-                    "Electrolytes",
-                    "Antioxydants"
-                ],
-                details: "Ce complexe de récupération premium combine plusieurs ingrédients pour optimiser la récupération musculaire post-entraînement."
-            },
-            { 
-                id: 48, 
-                name: "Intra-Workout 900g", 
-                price: 899, 
-                priceText: "899 MAD", 
-                category: "bcaa", 
-                priceCategory: "premium", 
-                description: "Formule d'entraînement intra-séance pour l'endurance", 
-                image: "img/products/image48.jpg", // تغيير اسم الصورة
-                outOfStock: false, 
-                level: 3,
-                features: [
-                    "BCAA 8:1:1",
-                    "Electrolytes",
-                    "Hydrates de carbone",
-                    "Beta-Alanine",
-                    "Citrulline"
-                ],
-                details: "Cette formule intra-entraînement fournit de l'énergie pendant la séance, prévient la fatigue et améliore l'endurance."
-            },
-            { 
-                id: 49, 
-                name: "Sleep Aid 60 capsules", 
-                price: 659, 
-                priceText: "659 MAD", 
-                category: "vitamins", 
-                priceCategory: "premium", 
-                description: "Aide naturelle au sommeil profond et réparateur", 
-                image: "img/products/image49.jpg", // تغيير اسم الصورة
-                outOfStock: false, 
-                level: 3,
-                features: [
-                    "Melatonin",
-                    "Valerian root",
-                    "GABA",
-                    "Magnesium",
-                    "5-HTP"
-                ],
-                details: "Cette aide au sommeil naturelle combine plusieurs ingrédients pour favoriser un sommeil profond et réparateur, essentiel pour la récupération."
-            },
-            { 
-                id: 50, 
-                name: "Joint Support Premium 120 capsules", 
-                price: 779, 
-                priceText: "779 MAD", 
-                category: "vitamins", 
-                priceCategory: "premium", 
-                description: "Support articulaire complet avec curcumine optimisée", 
-                image: "img/products/image50.jpg", // تغيير اسم الصورة
-                outOfStock: false, 
-                level: 3,
-                features: [
-                    "Curcumine 95% curcuminoïdes",
-                    "Glucosamine et chondroïtine",
-                    "MSM",
-                    "Collagène type II",
-                    "Hyaluronique acide"
-                ],
-                details: "Ce support articulaire premium contient de la curcumine hautement biodisponible pour une action anti-inflammatoire puissante."
-            },
-            { 
-                id: 51, 
-                name: "Whey Bio 1kg", 
-                price: 899, 
-                priceText: "899 MAD", 
-                category: "vegan", 
-                priceCategory: "premium", 
-                description: "Protéine de lactosérum biologique certifiée", 
-                image: "img/products/image51.jpg", // تغيير اسم الصورة
-                outOfStock: false, 
-                level: 3,
-                features: [
-                    "Certifié biologique",
-                    "Vaches nourries à l'herbe",
-                    "Sans hormones",
-                    "Sans pesticides",
-                    "24g de protéines par portion"
-                ],
-                details: "Cette whey biologique provient de vaches nourries à l'herbe, sans hormones ni pesticides, pour une protéine de la plus haute qualité."
-            },
-            { 
-                id: 52, 
-                name: "BCAA + Glutamine 500g", 
-                price: 549, 
-                priceText: "549 MAD", 
-                category: "bcaa", 
-                priceCategory: "premium", 
-                description: "Combinaison BCAA et glutamine pour une récupération optimale", 
-                image: "img/products/image52.jpg", // تغيير اسم الصورة
-                outOfStock: false, 
-                level: 3,
-                features: [
-                    "BCAA 2:1:1",
-                    "Glutamine ajoutée",
-                    "Ratio optimisé",
-                    "Instantanéisé",
-                    "Saveurs fruitées"
-                ],
-                details: "Cette combinaison unique de BCAA et glutamine offre une récupération musculaire optimale après l'entraînement."
-            },
-            { 
-                id: 53, 
-                name: "Keto Protein 750g", 
-                price: 799, 
-                priceText: "799 MAD", 
-                category: "whey", 
-                priceCategory: "premium", 
-                description: "Protéine adaptée au régime cétogène", 
-                image: "img/products/image53.jpg", // تغيير اسم الصورة
-                outOfStock: false, 
-                level: 3,
-                features: [
-                    "Moins de 2g de glucides par portion",
-                    "MCT ajoutés",
-                    "25g de protéines",
-                    "Adapté au régime keto",
-                    "Goût vanille ou chocolat"
-                ],
-                details: "Cette protéine spécialement formulée pour le régime cétogène est très faible en glucides avec des MCT ajoutés pour l'énergie."
-            },
-            { 
-                id: 54, 
-                name: "Nitric Oxide Booster 120 capsules", 
-                price: 729, 
-                priceText: "729 MAD", 
-                category: "preworkout", 
-                priceCategory: "premium", 
-                description: "Stimulateur d'oxyde nitrique pour la pompe maximale", 
-                image: "img/products/image54.jpg", // تغيير اسم الصورة
-                outOfStock: false, 
-                level: 3,
-                features: [
-                    "L-Citrulline",
-                    "Arginine AKG",
-                    "Agmatine",
-                    "Beetroot extract",
-                    "Pomegranate extract"
-                ],
-                details: "Ce stimulateur d'oxyde nitrique premium augmente la production de NO pour une pompe musculaire maximale et une meilleure circulation."
-            },
-            { 
-                id: 55, 
-                name: "Brain Booster 60 capsules", 
-                price: 689, 
-                priceText: "689 MAD", 
-                category: "vitamins", 
-                priceCategory: "premium", 
-                description: "Nootropique pour la concentration et la mémoire", 
-                image: "img/products/image55.jpg", // تغيير اسم الصورة
-                outOfStock: false, 
-                level: 3,
-                features: [
-                    "Lion's Mane",
-                    "Bacopa Monnieri",
-                    "Rhodiola Rosea",
-                    "Ginkgo Biloba",
-                    "Phosphatidylserine"
-                ],
-                details: "Ce complément nootropique combine plusieurs ingrédients pour améliorer la concentration, la mémoire et les fonctions cognitives."
-            },
-            { 
-                id: 56, 
-                name: "Collagen Peptides 300g", 
-                price: 749, 
-                priceText: "749 MAD", 
-                category: "vitamins", 
-                priceCategory: "premium", 
-                description: "Collagène hydrolysé pour une absorption optimale", 
-                image: "img/products/image56.jpg", // تغيير اسم الصورة
-                outOfStock: false, 
-                level: 3,
-                features: [
-                    "Collagène hydrolysé",
-                    "Type I et III",
-                    "20g de protéines par portion",
-                    "Sans saveur",
-                    "Facile à mélanger"
-                ],
-                details: "Ce collagène hydrolysé est prédigéré pour une absorption optimale, soutenant la santé des articulations, de la peau et des cheveux."
-            },
-            { 
-                id: 57, 
-                name: "Immune Support 60 capsules", 
-                price: 699, 
-                priceText: "699 MAD", 
-                category: "vitamins", 
-                priceCategory: "premium", 
-                description: "Soutien immunitaire avancé avec vitamine C liposomale", 
-                image: "img/products/image57.jpg", // تغيير اسم الصورة
-                outOfStock: false, 
-                level: 3,
-                features: [
-                    "Vitamine C liposomale",
-                    "Zinc",
-                    "Vitamine D3",
-                    "Echinacea",
-                    "Elderberry"
-                ],
-                details: "Ce soutien immunitaire premium combine de la vitamine C liposomale pour une absorption supérieure avec d'autres ingrédients immunostimulants."
-            },
-            { 
-                id: 58, 
-                name: "Electrolyte Complex 300g", 
-                price: 529, 
-                priceText: "529 MAD", 
-                category: "vitamins", 
-                priceCategory: "premium", 
-                description: "Complexe d'électrolytes pour l'hydratation optimale", 
-                image: "img/products/image58.jpg", // تغيير اسم الصورة
-                outOfStock: false, 
-                level: 3,
-                features: [
-                    "Sodium, potassium, magnésium",
-                    "Zinc",
-                    "BCAA ajoutés",
-                    "Saveurs naturelles",
-                    "Sans sucre"
-                ],
-                details: "Ce complexe d'électrolytes premium restaure les minéraux essentiels perdus pendant l'exercice pour une hydratation optimale."
-            },
-            { 
-                id: 59, 
-                name: "Mass Gainer Premium 3kg", 
-                price: 849, 
-                priceText: "849 MAD", 
-                category: "mass", 
-                priceCategory: "premium", 
-                description: "Gain de masse premium avec glucides complexes", 
-                image: "img/products/image59.jpg", // تغيير اسم الصورة
-                outOfStock: false, 
-                level: 3,
-                features: [
-                    "50g de protéines par portion",
-                    "Glucides à faible IG",
-                    "MCT ajoutés",
-                    "Enzymes digestives",
-                    "BCAA et glutamine"
-                ],
-                details: "Ce mass gainer premium utilise des glucides à faible index glycémique et des MCT pour une prise de masse propre et efficace."
-            },
-            { 
-                id: 60, 
-                name: "Pre-Workout Elite 300g", 
-                price: 799, 
-                priceText: "799 MAD", 
-                category: "preworkout", 
-                priceCategory: "premium", 
-                description: "Pré-entraînement élite pour la performance maximale", 
-                image: "img/products/image60.jpg", // تغيير اسم الصورة
-                outOfStock: false, 
-                level: 3,
-                features: [
-                    "Caffeine anhydre 350mg",
-                    "Beta-Alanine 3.2g",
-                    "Citrulline Malate 8g",
-                    "Betaine 2.5g",
-                    "Nootropiques pour le focus"
-                ],
-                details: "Ce pré-entraînement élite offre des doses cliniquement prouvées de chaque ingrédient pour une performance maximale à l'entraînement."
-            },
+            // Niveau 3: Produits Premium (25-36)
+            { id: 22, name: "Créatine HCL 300g", price: 699, priceText: "699 MAD", category: "creatine", priceCategory: "premium", description: "Créatine hautement absorbable", image: "https://via.placeholder.com/300x300/e63946/fff?text=HCL", outOfStock: false, level: 3 },
+            { id: 23, name: "BCAA Instantized 500g", price: 659, priceText: "659 MAD", category: "bcaa", priceCategory: "premium", description: "BCAA instantanés sans agglomération", image: "https://via.placeholder.com/300x300/e63946/fff?text=BCAA+Inst", outOfStock: false, level: 3 },
+            { id: 24, name: "Whey Hydrolysée 1.5kg", price: 899, priceText: "899 MAD", category: "whey", priceCategory: "premium", description: "Protéine prédigérée pour absorption rapide", image: "https://via.placeholder.com/300x300/e63946/fff?text=Hydro", outOfStock: false, level: 3 },
+            { id: 25, name: "Testosterone Booster", price: 779, priceText: "779 MAD", category: "vitamins", priceCategory: "premium", description: "Stimulateur naturel de testostérone", image: "https://via.placeholder.com/300x300/e63946/fff?text=Testo", outOfStock: false, level: 3 },
+            { id: 26, name: "Fat Burner Extreme", price: 699, priceText: "699 MAD", category: "preworkout", priceCategory: "premium", description: "Brûleur de graisse avancé", image: "https://via.placeholder.com/300x300/e63946/fff?text=Fat+Burner", outOfStock: false, level: 3 },
+            { id: 27, name: "Protéine Végétale Complète", price: 729, priceText: "729 MAD", category: "vegan", priceCategory: "premium", description: "Mélange de protéines végétales premium", image: "https://via.placeholder.com/300x300/e63946/fff?text=Vegan", outOfStock: false, level: 3 },
+            { id: 28, name: "Recovery Complex", price: 849, priceText: "849 MAD", category: "bcaa", priceCategory: "premium", description: "Complexe de récupération avancé", image: "https://via.placeholder.com/300x300/e63946/fff?text=Recovery", outOfStock: false, level: 3 },
+            { id: 38, name: "Intra-Workout 900g", price: 899, priceText: "899 MAD", category: "bcaa", priceCategory: "premium", description: "Formule d'entraînement intra-séance", image: "https://via.placeholder.com/300x300/e63946/fff?text=Intra", outOfStock: false, level: 3 },
+            { id: 39, name: "Sleep Aid 60 capsules", price: 659, priceText: "659 MAD", category: "vitamins", priceCategory: "premium", description: "Aide naturelle au sommeil profond", image: "https://via.placeholder.com/300x300/e63946/fff?text=Sleep", outOfStock: false, level: 3 },
+            { id: 40, name: "Joint Support 120 capsules", price: 779, priceText: "779 MAD", category: "vitamins", priceCategory: "premium", description: "Support articulaire complet", image: "https://via.placeholder.com/300x300/e63946/fff?text=Joint", outOfStock: false, level: 3 },
+            { id: 47, name: "Whey Bio 1kg", price: 899, priceText: "899 MAD", category: "vegan", priceCategory: "premium", description: "Protéine de lactosérum biologique", image: "https://via.placeholder.com/300x300/e63946/fff?text=Bio", outOfStock: false, level: 3 },
+            { id: 49, name: "BCAA + Glutamine", price: 549, priceText: "549 MAD", category: "bcaa", priceCategory: "premium", description: "Combinaison BCAA et glutamine", image: "https://via.placeholder.com/300x300/e63946/fff?text=BCAA+Glut", outOfStock: false, level: 3 },
             
-            // Niveau 4: Produits Grands Formats (20 produits)
-            // يمكن تقديم خصم خاص للطلبات الكبيرة
-            { 
-                id: 61, 
-                name: "Whey Gold Standard 2.27kg - GRAND FORMAT", 
-                price: 799, 
-                priceText: "799 MAD", 
-                category: "whey", 
-                priceCategory: "premium", 
-                description: "Format économique du best-seller. Actuellement en rupture de stock.", 
-                image: "img/products/image61.jpg", // تغيير اسم الصورة
-                outOfStock: true, 
-                level: 4,
-                features: [
-                    "Format économique grande taille",
-                    "24g de protéines par portion",
-                    "Durée: 2-3 mois",
-                    "Économie de 20% par rapport au format 1kg",
-                    "Mêmes bénéfices que le format standard"
-                ],
-                details: "Le format 2.27kg de Gold Standard Whey offre une excellente économie pour les utilisateurs réguliers. Malheureusement, ce produit est actuellement en rupture de stock."
-            },
-            { 
-                id: 62, 
-                name: "Mass Gainer XXL 6.8kg - TRÈS GRAND FORMAT", 
-                price: 899, 
-                priceText: "899 MAD", 
-                category: "mass", 
-                priceCategory: "premium", 
-                description: "Gain de masse extrême. Rupture de stock temporaire.", 
-                image: "img/products/image62.jpg", // تغيير اسم الصورة
-                outOfStock: true, 
-                level: 4,
-                features: [
-                    "Format XXL 6.8kg",
-                    "1250 calories par portion",
-                    "Durée: 3-4 mois",
-                    "Économie de 30%",
-                    "Idéal pour la prise de masse sérieuse"
-                ],
-                details: "Ce format XXL de mass gainer est parfait pour ceux qui suivent un programme de prise de masse sérieux. Actuellement en rupture de stock."
-            },
-            { 
-                id: 63, 
-                name: "Pre-Workout Insane Labz - PRODUIT POPULAIRE", 
-                price: 749, 
-                priceText: "749 MAD", 
-                category: "preworkout", 
-                priceCategory: "premium", 
-                description: "Formule ultime pour l'énergie. Épuisé - Réapprovisionnement en cours.", 
-                image: "img/products/image63.jpg", // تغيير اسم الصورة
-                outOfStock: true, 
-                level: 4,
-                features: [
-                    "Formule thermogénique",
-                    "Énergie explosive",
-                    "Focus mental intense",
-                    "Pompe musculaire extrême",
-                    "Saveurs uniques"
-                ],
-                details: "Insane Labz est l'un des pré-entraînements les plus populaires pour son énergie explosive. Réapprovisionnement en cours."
-            },
-            { 
-                id: 64, 
-                name: "Whey Isolate 2.5kg - GRAND FORMAT", 
-                price: 1199, 
-                priceText: "1199 MAD", 
-                category: "whey", 
-                priceCategory: "premium", 
-                description: "Format grande taille de whey isolée. Rupture de stock.", 
-                image: "img/products/image64.jpg", // تغيير اسم الصورة
-                outOfStock: true, 
-                level: 4,
-                features: [
-                    "Format 2.5kg",
-                    "Whey isolate pure",
-                    "Moins de 1g de lactose",
-                    "Économie de 25%",
-                    "Durée: 2-3 mois"
-                ],
-                details: "Le format 2.5kg de whey isolate offre une excellente économie pour les utilisateurs réguliers. Actuellement en rupture de stock."
-            },
-            { 
-                id: 65, 
-                name: "Whey Concentrate 2kg", 
-                price: 649, 
-                priceText: "649 MAD", 
-                category: "whey", 
-                priceCategory: "moyen", 
-                description: "Whey concentrée en grand format économique", 
-                image: "img/products/image65.jpg", // تغيير اسم الصورة
-                outOfStock: false, 
-                level: 4,
-                features: [
-                    "Format économique 2kg",
-                    "22g de protéines par portion",
-                    "Bon rapport qualité/prix",
-                    "Durée: 1-2 mois",
-                    "Saveurs classiques"
-                ],
-                details: "Ce format 2kg de whey concentrée offre un excellent rapport qualité/prix pour les utilisateurs réguliers."
-            },
-            { 
-                id: 66, 
-                name: "Créatine en Gélules 200 caps", 
-                price: 399, 
-                priceText: "399 MAD", 
-                category: "creatine", 
-                priceCategory: "moyen", 
-                description: "Créatine en gélules en format économique", 
-                image: "img/products/image66.jpg", // تغيير اسم الصورة
-                outOfStock: false, 
-                level: 4,
-                features: [
-                    "200 capsules",
-                    "5g de créatine par capsule",
-                    "Pratique à prendre",
-                    "Pas de mesure nécessaire",
-                    "Durée: 2-3 mois"
-                ],
-                details: "Ces gélules de créatine offrent une solution pratique pour ceux qui n'aiment pas mesurer la poudre."
-            },
-            { 
-                id: 67, 
-                name: "BCAA en Gélules 180 caps", 
-                price: 349, 
-                priceText: "349 MAD", 
-                category: "bcaa", 
-                priceCategory: "moyen", 
-                description: "BCAA en format capsule pratique", 
-                image: "img/products/image67.jpg", // تغيير اسم الصورة
-                outOfStock: false, 
-                level: 4,
-                features: [
-                    "180 capsules",
-                    "1000mg de BCAA par capsule",
-                    "Ratio 2:1:1",
-                    "Pratique pour les déplacements",
-                    "Durée: 1-2 mois"
-                ],
-                details: "Ces capsules de BCAA sont parfaites pour les personnes qui voyagent ou qui préfèrent éviter de mélanger des poudres."
-            },
-            { 
-                id: 68, 
-                name: "Vitamine B Complex 120 caps", 
-                price: 199, 
-                priceText: "199 MAD", 
-                category: "vitamins", 
-                priceCategory: "economique", 
-                description: "Complexe de vitamines B en grand format", 
-                image: "img/products/image68.jpg", // تغيير اسم الصورة
-                outOfStock: false, 
-                level: 4,
-                features: [
-                    "120 capsules",
-                    "8 vitamines B",
-                    "Soutien énergétique",
-                    "Santé nerveuse",
-                    "Durée: 4 mois"
-                ],
-                details: "Ce complexe de vitamines B en grand format offre un soutien énergétique et nerveux à un prix économique."
-            },
-            { 
-                id: 69, 
-                name: "Fat Burner Économique 120 caps", 
-                price: 249, 
-                priceText: "249 MAD", 
-                category: "fatburner", 
-                priceCategory: "economique", 
-                description: "Brûleur de graisse basique en grand format", 
-                image: "img/products/image69.jpg", // تغيير اسم الصورة
-                outOfStock: false, 
-                level: 4,
-                features: [
-                    "120 capsules",
-                    "Caféine et thé vert",
-                    "Supprime l'appétit",
-                    "Augmente le métabolisme",
-                    "Durée: 1-2 mois"
-                ],
-                details: "Ce brûleur de graisse économique en grand format offre une solution abordable pour soutenir la perte de poids."
-            },
-            { 
-                id: 70, 
-                name: "Test Booster Économique 90 caps", 
-                price: 279, 
-                priceText: "279 MAD", 
-                category: "testobooster", 
-                priceCategory: "economique", 
-                description: "Stimulateur de testostérone économique", 
-                image: "img/products/image70.jpg", // تغيير اسم الصورة
-                outOfStock: false, 
-                level: 4,
-                features: [
-                    "90 capsules",
-                    "Tribulus terrestris",
-                    "Fenugrec",
-                    "Zinc",
-                    "Durée: 1 mois"
-                ],
-                details: "Ce booster de testostérone économique en format capsule offre un soutien hormonal à un prix abordable."
-            },
-            { 
-                id: 71, 
-                name: "Créatine Effervescente 60 comprimés", 
-                price: 499, 
-                priceText: "499 MAD", 
-                category: "creatine", 
-                priceCategory: "moyen", 
-                description: "Créatine en comprimés effervescents", 
-                image: "img/products/image71.jpg", // تغيير اسم الصورة
-                outOfStock: false, 
-                level: 4,
-                features: [
-                    "60 comprimés effervescents",
-                    "5g de créatine par comprimé",
-                    "Saveur orange ou citron",
-                    "Pratique et rapide",
-                    "Absorption rapide"
-                ],
-                details: "Ces comprimés effervescents de créatine offrent une solution pratique et agréable pour prendre sa créatine quotidienne."
-            },
-            { 
-                id: 72, 
-                name: "Vitamines pour Sportifs 120 caps", 
-                price: 429, 
-                priceText: "429 MAD", 
-                category: "vitamins", 
-                priceCategory: "moyen", 
-                description: "Multivitamines spécialement formulées pour les sportifs", 
-                image: "img/products/image72.jpg", // تغيير اسم الصورة
-                outOfStock: false, 
-                level: 4,
-                features: [
-                    "120 capsules",
-                    "Formulé pour les sportifs",
-                    "Antioxydants ajoutés",
-                    "Soutien articulaire",
-                    "Durée: 2 mois"
-                ],
-                details: "Ces multivitamines spécialement formulées pour les sportifs répondent aux besoins nutritionnels accrus de l'activitة physique intense."
-            },
-            { 
-                id: 73, 
-                name: "Whey Matrix 3kg", 
-                price: 899, 
-                priceText: "899 MAD", 
-                category: "whey", 
-                priceCategory: "moyen", 
-                description: "Mélange de protéines en grand format", 
-                image: "img/products/image73.jpg", // تغيير اسم الصورة
-                outOfStock: false, 
-                level: 4,
-                features: [
-                    "Format 3kg",
-                    "Mélange whey, caséine, œuf",
-                    "Libération progressive",
-                    "Économie de 30%",
-                    "Durée: 2-3 mois"
-                ],
-                details: "Ce mélange de protéines en grand format combine différents types de protéines pour une libération progressive des acides aminés."
-            },
-            { 
-                id: 74, 
-                name: "BCAA Powder 1kg", 
-                price: 599, 
-                priceText: "599 MAD", 
-                category: "bcaa", 
-                priceCategory: "moyen", 
-                description: "BCAA en poudre en grand format", 
-                image: "img/products/image74.jpg", // تغيير اسم الصورة
-                outOfStock: false, 
-                level: 4,
-                features: [
-                    "Format 1kg",
-                    "BCAA 2:1:1",
-                    "Instantanéisé",
-                    "Saveurs fruitées",
-                    "Durée: 3-4 mois"
-                ],
-                details: "Ce format 1kg de BCAA en poudre offre une excellente économie pour les utilisateurs réguliers."
-            },
-            { 
-                id: 75, 
-                name: "Mass Gainer 5kg - MEGA FORMAT", 
-                price: 999, 
-                priceText: "999 MAD", 
-                category: "mass", 
-                priceCategory: "premium", 
-                description: "Format méga économique pour prise de masse sérieuse", 
-                image: "img/products/image75.jpg", // تغيير اسم الصورة
-                outOfStock: false, 
-                level: 4,
-                features: [
-                    "Format 5kg",
-                    "1250 calories par portion",
-                    "Économie de 40%",
-                    "Durée: 3-4 mois",
-                    "Idéal pour les bodybuilders"
-                ],
-                details: "Ce format méga de 5kg est parfait pour les bodybuilders et ceux qui suivent un programme de prise de masse sérieux."
-            },
-            { 
-                id: 76, 
-                name: "Pre-Workout 500g", 
-                price: 699, 
-                priceText: "699 MAD", 
-                category: "preworkout", 
-                priceCategory: "moyen", 
-                description: "Pré-entraînement en grand format", 
-                image: "img/products/image76.jpg", // تغيير اسم الصورة
-                outOfStock: false, 
-                level: 4,
-                features: [
-                    "Format 500g",
-                    "80 portions",
-                    "Économie de 25%",
-                    "Énergie et focus",
-                    "Durée: 2-3 mois"
-                ],
-                details: "Ce format 500g de pré-entraînement offre une excellente économie pour les utilisateurs réguliers."
-            },
-            { 
-                id: 77, 
-                name: "Glutamine 500g", 
-                price: 499, 
-                priceText: "499 MAD", 
-                category: "bcaa", 
-                priceCategory: "moyen", 
-                description: "Glutamine en poudre en grand format", 
-                image: "img/products/image77.jpg", // تغيير اسم الصورة
-                outOfStock: false, 
-                level: 4,
-                features: [
-                    "Format 500g",
-                    "Glutamine pure",
-                    "Micronisée",
-                    "Sans saveur",
-                    "Durée: 2-3 mois"
-                ],
-                details: "Ce format 500g de glutamine offre une excellente économie pour ceux qui utilisent régulièrement ce complément pour la récupération."
-            },
-            { 
-                id: 78, 
-                name: "Protein Bars 12 pack", 
-                price: 399, 
-                priceText: "399 MAD", 
-                category: "snack", 
-                priceCategory: "moyen", 
-                description: "Barres protéinées - pack de 12", 
-                image: "img/products/image78.jpg", // تغيير اسم الصورة
-                outOfStock: false, 
-                level: 4,
-                features: [
-                    "12 barres",
-                    "20g de protéines par barre",
-                    "Goût chocolat, cookies & cream",
-                    "Pratique pour les déplacements",
-                    "Collation saine"
-                ],
-                details: "Ce pack de 12 barres protéinées est parfait pour les collations saines entre les repas ou après l'entraînement."
-            },
-            { 
-                id: 79, 
-                name: "Electrolyte Powder 500g", 
-                price: 349, 
-                priceText: "349 MAD", 
-                category: "vitamins", 
-                priceCategory: "moyen", 
-                description: "Poudre d'électrolytes en grand format", 
-                image: "img/products/image79.jpg", // تغيير اسم الصورة
-                outOfStock: false, 
-                level: 4,
-                features: [
-                    "Format 500g",
-                    "Electrolytes complets",
-                    "Saveurs fruitées",
-                    "Sans sucre",
-                    "Durée: 2-3 mois"
-                ],
-                details: "Cette poudre d'électrolytes en grand format est parfaite pour reconstituer les minéraux perdus pendant l'exercice intense."
-            },
-            { 
-                id: 80, 
-                name: "Protein Pancake Mix 1kg", 
-                price: 449, 
-                priceText: "449 MAD", 
-                category: "snack", 
-                priceCategory: "moyen", 
-                description: "Mélange pour pancakes protéinés", 
-                image: "img/products/image80.jpg", // تغيير اسم الصورة
-                outOfStock: false, 
-                level: 4,
-                features: [
-                    "Format 1kg",
-                    "25g de protéines par portion",
-                    "Prêt en 5 minutes",
-                    "Goût vanille ou chocolat",
-                    "Sans gluten"
-                ],
-                details: "Ce mélange pour pancakes protéinés offre un petit-déjeuner ou une collation riche en protéines, prêt en quelques minutes."
-            }
+            // Niveau 4: Produits Grands Formats (Épuisés) (37-48)
+            { id: 19, name: "Whey Gold Standard 2.27kg - GRAND FORMAT", price: 799, priceText: "799 MAD", category: "whey", priceCategory: "premium", description: "Format économique du best-seller. Actuellement en rupture de stock.", image: "https://via.placeholder.com/300x300/666/fff?text=GF+Whey", outOfStock: true, level: 4 },
+            { id: 20, name: "Mass Gainer XXL 6.8kg - TRÈS GRAND FORMAT", price: 899, priceText: "899 MAD", category: "mass", priceCategory: "premium", description: "Gain de masse extrême. Rupture de stock temporaire.", image: "https://via.placeholder.com/300x300/666/fff?text=GF+Mass", outOfStock: true, level: 4 },
+            { id: 21, name: "Pre-Workout Insane Labz - PRODUIT POPULAIRE", price: 749, priceText: "749 MAD", category: "preworkout", priceCategory: "premium", description: "Formule ultime pour l'énergie. Épuisé - Réapprovisionnement en cours.", image: "https://via.placeholder.com/300x300/666/fff?text=GF+Pre", outOfStock: true, level: 4 },
+            { id: 37, name: "Whey Isolate 2.5kg - GRAND FORMAT", price: 1199, priceText: "1199 MAD", category: "whey", priceCategory: "premium", description: "Format grande taille de whey isolée. Rupture de stock.", image: "https://via.placeholder.com/300x300/666/fff?text=GF+Isolate", outOfStock: true, level: 4 },
+            { id: 41, name: "Whey Concentrate 2kg", price: 649, priceText: "649 MAD", category: "whey", priceCategory: "moyen", description: "Whey concentrée bon marché", image: "https://via.placeholder.com/300x300/fca311/000?text=Conc+2kg", outOfStock: false, level: 4 },
+            { id: 42, name: "Créatine en Gélules 200 caps", price: 399, priceText: "399 MAD", category: "creatine", priceCategory: "moyen", description: "Créatine en gélules facile à prendre", image: "https://via.placeholder.com/300x300/fca311/000?text=Créatine+Caps", outOfStock: false, level: 4 },
+            { id: 43, name: "BCAA en Gélules", price: 349, priceText: "349 MAD", category: "bcaa", priceCategory: "moyen", description: "BCAA en format capsule", image: "https://via.placeholder.com/300x300/fca311/000?text=BCAA+Caps", outOfStock: false, level: 4 },
+            { id: 44, name: "Vitamine B Complex", price: 199, priceText: "199 MAD", category: "vitamins", priceCategory: "economique", description: "Complexe de vitamines B", image: "https://via.placeholder.com/300x300/2a9d8f/fff?text=B+Complex", outOfStock: false, level: 4 },
+            { id: 45, name: "Fat Burner Économique", price: 249, priceText: "249 MAD", category: "preworkout", priceCategory: "economique", description: "Brûleur de graisse basique", image: "https://via.placeholder.com/300x300/2a9d8f/fff?text=Fat+Eco", outOfStock: false, level: 4 },
+            { id: 46, name: "Test Booster Économique", price: 279, priceText: "279 MAD", category: "vitamins", priceCategory: "economique", description: "Stimulateur de testostérone économique", image: "https://via.placeholder.com/300x300/2a9d8f/fff?text=Test+Eco", outOfStock: false, level: 4 },
+            { id: 48, name: "Créatine Effervescente", price: 499, priceText: "499 MAD", category: "creatine", priceCategory: "moyen", description: "Créatine en comprimés effervescents", image: "https://via.placeholder.com/300x300/fca311/000?text=Effervescent", outOfStock: false, level: 4 },
+            { id: 50, name: "Vitamines pour Sportifs", price: 429, priceText: "429 MAD", category: "vitamins", priceCategory: "moyen", description: "Multivitamines spécialement formulées pour les sportifs", image: "https://via.placeholder.com/300x300/fca311/000?text=Sport+Vit", outOfStock: false, level: 4 }
         ];
 
-        // قاعدة بيانات الخدمات مع 3 صور لكل خدمة
+        // Base de données des services (5 services spécifiques)
         const services = [
             {
                 id: 1,
@@ -3858,11 +2076,6 @@
                 icon: "fa-capsules",
                 color: "service-1",
                 price: "À partir de 99 MAD",
-                images: [
-                    "img/service1/image1.jpg", // يمكن تغيير إلى صور حقيقية
-                    "img/service1/image2.jpg",
-                    "img/service1/image3.jpg"
-                ],
                 features: [
                     "Plus de 1000 produits disponibles",
                     "Protéines, créatine, BCAA, vitamines",
@@ -3880,11 +2093,6 @@
                 icon: "fa-leaf",
                 color: "service-2",
                 price: "À partir de 299 MAD",
-                images: [
-                    "img/service2/image1.jpg", // يمكن تغيير إلى صور حقيقية
-                    "img/service2/image2.jpg",
-                    "img/service2/image3.jpg"
-                ],
                 features: [
                     "Produits 100% biologiques certifiés",
                     "Sans additifs artificiels",
@@ -3902,11 +2110,6 @@
                 icon: "fa-chalkboard-teacher",
                 color: "service-3",
                 price: "499 MAD/mois",
-                images: [
-                    "img/service3/image1.jpg", // يمكن تغيير إلى صور حقيقية
-                    "img/service3/image2.jpg",
-                    "img/service3/image3.jpg"
-                ],
                 features: [
                     "Programme d'entraînement personnalisé",
                     "Plan nutritionnel sur mesure",
@@ -3924,11 +2127,6 @@
                 icon: "fa-dumbbell",
                 color: "service-4",
                 price: "299 MAD/mois",
-                images: [
-                    "img/service4/image1.jpg", // يمكن تغيير إلى صور حقيقية
-                    "img/service4/image2.jpg",
-                    "img/service4/image3.jpg"
-                ],
                 features: [
                     "Programmes pour tous les niveaux",
                     "Exercices détaillés avec vidéos",
@@ -3946,11 +2144,6 @@
                 icon: "fa-utensils",
                 color: "service-5",
                 price: "399 MAD/mois",
-                images: [
-                    "img/service5/image1.jpg", // يمكن تغيير إلى صور حقيقية
-                    "img/service5/image2.jpg",
-                    "img/service5/image3.jpg"
-                ],
                 features: [
                     "Analyse complète de votre métabolisme",
                     "Plan alimentaire sur mesure (hebdomadaire/mensuel)",
@@ -3982,9 +2175,6 @@
             { id: 4, name: "Grands Formats & Spéciaux", icon: "fa-box-open", count: 0 }
         ];
 
-        // شعار الموقع لنتائج البحث
-        const siteLogoHTML = '<div class="search-result-logo">PM</div>';
-
         // Initialiser la page
         document.addEventListener('DOMContentLoaded', function() {
             initProducts();
@@ -3994,7 +2184,6 @@
             initMobileMenu();
             initCategoryLinks();
             initCart();
-            initProductModal();
             updateCart();
             
             // Initialiser le filtre "Afficher les produits épuisés"
@@ -4029,7 +2218,7 @@
             document.getElementById('motivation-text').textContent = `"${randomMotivation}"`;
         });
 
-        // Initialiser المنتجات
+        // Initialiser les produits
         function initProducts() {
             // Calculer le nombre de produits par niveau
             productLevels.forEach(level => {
@@ -4121,7 +2310,7 @@
             levelDiv.innerHTML = `
                 <div class="level-header">
                     <h3 class="level-title">
-                        <i class="fas ${level.icon}"></i>
+                        <i class="fas ${level.icon}</i>
                         ${level.name}
                     </h3>
                     <span class="level-count">${level.count} produits</span>
@@ -4133,9 +2322,9 @@
             
             const productsGrid = levelDiv.querySelector(`#products-grid-level-${level.id}`);
             
-            // Ajouter les produits à ce niveau (عرض 3 منتجات لكل صف)
-            const startIndex = (currentPage - 1) * 12; // 12 منتج لكل صفحة
-            const endIndex = startIndex + 12;
+            // Ajouter les produits à ce niveau (limiter à 6 par niveau pour la pagination)
+            const startIndex = (currentPage - 1) * 3;
+            const endIndex = startIndex + 3;
             const productsToShow = products.slice(startIndex, endIndex);
             
             productsToShow.forEach(product => {
@@ -4150,7 +2339,6 @@
         function createProductCard(product) {
             const card = document.createElement('div');
             card.className = `product-card ${product.priceCategory} ${product.outOfStock ? 'out-of-stock' : ''}`;
-            card.setAttribute('data-id', product.id);
             
             // Déterminer le texte du badge
             let badgeText = "";
@@ -4199,36 +2387,20 @@
                     <div class="product-price">${product.priceText}</div>
                     ${outOfStockMessage}
                     <div class="product-actions">
-                        <button class="${buttonClass}" data-id="${product.id}" data-action="${buttonAction}" ${buttonDisabled}>
+                        <button class="${buttonClass}" data-id="${product.id}" data-action="${buttonAction}" ${buttonDisabled} style="width: 100%;">
                             ${buttonText}
-                        </button>
-                        <button class="btn btn-small" style="background-color: var(--secondary);">
-                            <i class="fas fa-info-circle"></i> Détails
                         </button>
                     </div>
                 </div>
             `;
             
-            // Ajouter l'événement pour afficher التفاصيل
-            const detailsBtn = card.querySelector('.btn-small:last-child');
-            detailsBtn.addEventListener('click', (e) => {
-                e.stopPropagation();
-                showProductDetails(product.id);
-            });
-            
             // Ajouter l'événement pour ajouter au panier
             if (!product.outOfStock) {
-                const addToCartBtn = card.querySelector(`[data-action="add-to-cart"]`);
-                addToCartBtn.addEventListener('click', (e) => {
-                    e.stopPropagation();
+                const addToCartBtn = card.querySelector('button');
+                addToCartBtn.addEventListener('click', () => {
                     addToCart(product.id);
                 });
             }
-            
-            // Ajouter l'événement pour النقر على المنتج كله
-            card.addEventListener('click', () => {
-                showProductDetails(product.id);
-            });
             
             return card;
         }
@@ -4251,19 +2423,7 @@
             const card = document.createElement('div');
             card.className = `service-card ${service.color}`;
             
-            // إنشاء HTML لـ 3 صور
-            const serviceImagesHTML = `
-                <div class="service-images-container">
-                    ${service.images.map((img, index) => `
-                        <div class="service-image">
-                            <img src="${img}" alt="${service.title} - Image ${index + 1}" onerror="this.onerror=null; this.src='https://via.placeholder.com/400x300?text=Service+${service.id}+Image+${index + 1}'">
-                        </div>
-                    `).join('')}
-                </div>
-            `;
-            
             card.innerHTML = `
-                ${serviceImagesHTML}
                 <div class="service-header">
                     <div class="service-icon">
                         <i class="fas ${service.icon}"></i>
@@ -4383,7 +2543,7 @@
                 resultItem.className = 'search-result-item';
                 resultItem.innerHTML = `
                     <div class="search-result-img">
-                        ${siteLogoHTML}
+                        <img src="${product.image}" alt="${product.name}" onerror="this.onerror=null; this.src='https://via.placeholder.com/50x50?text=${product.name.substring(0, 2)}'" style="width: 100%; height: 100%; object-fit: cover; border-radius: 8px;">
                     </div>
                     <div class="search-result-info">
                         <h4>${product.name}</h4>
@@ -4403,107 +2563,6 @@
                 
                 searchResults.appendChild(resultItem);
             });
-        }
-
-        // Initialiser المنتج modal
-        function initProductModal() {
-            const productModal = document.getElementById('product-modal');
-            const closeModalBtn = document.querySelector('.close-product-modal');
-            
-            // إغلاق modal عند النقر على الزر
-            closeModalBtn.addEventListener('click', () => {
-                productModal.classList.remove('active');
-            });
-            
-            // إغلاق modal عند النقر خارج المحتوى
-            productModal.addEventListener('click', (e) => {
-                if (e.target === productModal) {
-                    productModal.classList.remove('active');
-                }
-            });
-            
-            // إغلاق modal بمفتاح ESC
-            document.addEventListener('keydown', (e) => {
-                if (e.key === 'Escape' && productModal.classList.contains('active')) {
-                    productModal.classList.remove('active');
-                }
-            });
-        }
-
-        // عرض تفاصيل المنتج
-        function showProductDetails(productId) {
-            const product = allProducts.find(p => p.id === productId);
-            if (!product) return;
-            
-            const productModal = document.getElementById('product-modal');
-            const modalBody = document.getElementById('product-modal-body');
-            
-            // تحديد لون السعر
-            let priceColorClass = '';
-            if (product.priceCategory === "economique") {
-                priceColorClass = 'style="color: var(--economique);"';
-            } else if (product.priceCategory === "moyen") {
-                priceColorClass = 'style="color: var(--moyen);"';
-            } else {
-                priceColorClass = 'style="color: var(--premium);"';
-            }
-            
-            // إنشاء محتوى Modal
-            modalBody.innerHTML = `
-                <div class="product-modal-image">
-                    <img src="${product.image}" alt="${product.name}" onerror="this.onerror=null; this.src='https://via.placeholder.com/500x400?text=${product.name.replace(/ /g, '+')}'">
-                </div>
-                <div class="product-modal-info">
-                    <div class="product-modal-category">${product.category.toUpperCase()} - ${product.priceCategory.toUpperCase()}</div>
-                    <h2 class="product-modal-name">${product.name}</h2>
-                    <div class="product-modal-price" ${priceColorClass}>${product.priceText}</div>
-                    <p class="product-modal-description">${product.description}</p>
-                    
-                    <div class="product-modal-features">
-                        <h4>Caractéristiques principales:</h4>
-                        <ul>
-                            ${product.features ? product.features.map(feature => `<li>${feature}</li>`).join('') : ''}
-                        </ul>
-                    </div>
-                    
-                    <div class="product-modal-features">
-                        <h4>Détails supplémentaires:</h4>
-                        <p>${product.details || 'Aucun détail supplémentaire disponible pour ce produit.'}</p>
-                    </div>
-                    
-                    <div class="product-modal-actions">
-                        ${product.outOfStock ? 
-                            `<button class="btn btn-out-of-stock" style="flex: 1;" disabled>Produit Épuisé</button>` : 
-                            `<button class="btn" style="flex: 1;" id="modal-add-to-cart">
-                                <i class="fas fa-cart-plus"></i> Ajouter au panier
-                            </button>`
-                        }
-                        <button class="btn" style="background-color: var(--secondary); flex: 1;" id="modal-whatsapp">
-                            <i class="fab fa-whatsapp"></i> Commander via WhatsApp
-                        </button>
-                    </div>
-                </div>
-            `;
-            
-            // إضافة الأحداث للأزرار
-            if (!product.outOfStock) {
-                const addToCartBtn = document.getElementById('modal-add-to-cart');
-                addToCartBtn.addEventListener('click', () => {
-                    addToCart(product.id);
-                    productModal.classList.remove('active');
-                });
-            }
-            
-            const whatsappBtn = document.getElementById('modal-whatsapp');
-            whatsappBtn.addEventListener('click', () => {
-                const message = `Bonjour Protéine Maroc,\n\nJe souhaite commander le produit suivant:\n\n*${product.name}*\nPrix: ${product.priceText}\n\nMerci de me contacter pour plus d'informations et pour finaliser la commande.\n\nNom: [Votre nom]\nTéléphone: [Votre numéro]\nVille: [Votre ville]`;
-                const encodedMessage = encodeURIComponent(message);
-                window.open(`https://wa.me/212669681391?text=${encodedMessage}`, '_blank');
-                productModal.classList.remove('active');
-            });
-            
-            // عرض الـ Modal
-            productModal.classList.add('active');
         }
 
         // Initialiser les filtres
@@ -4576,7 +2635,7 @@
             const pagination = document.getElementById('pagination');
             if (!pagination) return;
             
-            const totalPages = Math.ceil(totalProducts / 12); // 12 منتج لكل صفحة
+            const totalPages = Math.ceil(totalProducts / (3 * 4)); // 3 produits par niveau × 4 niveaux
             
             pagination.innerHTML = '';
             
@@ -4819,7 +2878,8 @@
             cartItems.innerHTML = cart.map(item => `
                 <div class="cart-item">
                     <div class="cart-item-img">
-                        ${siteLogoHTML}
+                        <img src="${item.image}" 
+                             onerror="this.onerror=null; this.src='https://via.placeholder.com/60x60?text=${item.name.substring(0, 2)}'">
                     </div>
                     <div class="cart-item-info">
                         <h4>${item.name}</h4>
