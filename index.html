@@ -1102,6 +1102,202 @@
             color: var(--service-5);
         }
         
+        /* Section Coaching en ligne personnalisé */
+        .coaching-section {
+            padding: 100px 0;
+            background-color: white;
+        }
+        
+        .coaching-content {
+            display: flex;
+            flex-direction: column;
+            gap: 40px;
+            align-items: center;
+        }
+        
+        @media (min-width: 992px) {
+            .coaching-content {
+                flex-direction: row;
+            }
+        }
+        
+        .coaching-image {
+            flex: 1;
+            border-radius: var(--radius);
+            overflow: hidden;
+            box-shadow: var(--shadow);
+        }
+        
+        .coaching-image img {
+            width: 100%;
+            height: auto;
+            display: block;
+        }
+        
+        .coaching-info {
+            flex: 1;
+        }
+        
+        .coaching-info h3 {
+            font-size: 1.8rem;
+            color: var(--secondary);
+            margin-bottom: 20px;
+        }
+        
+        .coaching-info p {
+            color: var(--gray);
+            margin-bottom: 30px;
+            line-height: 1.6;
+        }
+        
+        .coaching-features {
+            margin-bottom: 30px;
+        }
+        
+        .coaching-feature {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            margin-bottom: 15px;
+        }
+        
+        .coaching-feature i {
+            color: var(--success);
+            font-size: 1.2rem;
+        }
+        
+        .coaching-price {
+            margin-bottom: 30px;
+        }
+        
+        .coaching-price h4 {
+            font-size: 1.5rem;
+            color: var(--dark);
+        }
+        
+        .coaching-price span {
+            color: var(--primary);
+            font-weight: 800;
+            font-size: 2rem;
+        }
+        
+        .coaching-btn {
+            background: linear-gradient(135deg, var(--success), #2a9d8f);
+            width: 100%;
+        }
+        
+        .coaching-btn:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 8px 20px rgba(42, 157, 143, 0.4);
+        }
+        
+        /* Section Programmes alimentaires personnalisés */
+        .nutrition-section {
+            padding: 100px 0;
+            background-color: var(--light);
+        }
+        
+        .nutrition-content {
+            display: flex;
+            flex-direction: column;
+            gap: 40px;
+            align-items: center;
+        }
+        
+        @media (min-width: 992px) {
+            .nutrition-content {
+                flex-direction: row;
+            }
+        }
+        
+        .nutrition-image {
+            flex: 1;
+            border-radius: var(--radius);
+            overflow: hidden;
+            box-shadow: var(--shadow);
+        }
+        
+        .nutrition-image img {
+            width: 100%;
+            height: auto;
+            display: block;
+        }
+        
+        .nutrition-info {
+            flex: 1;
+        }
+        
+        .nutrition-info h3 {
+            font-size: 1.8rem;
+            color: var(--secondary);
+            margin-bottom: 20px;
+        }
+        
+        .nutrition-info p {
+            color: var(--gray);
+            margin-bottom: 30px;
+            line-height: 1.6;
+        }
+        
+        .nutrition-features {
+            margin-bottom: 30px;
+        }
+        
+        .nutrition-feature {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            margin-bottom: 15px;
+        }
+        
+        .nutrition-feature i {
+            color: var(--success);
+            font-size: 1.2rem;
+        }
+        
+        .nutrition-price {
+            margin-bottom: 30px;
+        }
+        
+        .nutrition-price h4 {
+            font-size: 1.5rem;
+            color: var(--dark);
+        }
+        
+        .nutrition-price span {
+            color: var(--primary);
+            font-weight: 800;
+            font-size: 2rem;
+        }
+        
+        .nutrition-btn {
+            background: linear-gradient(135deg, #FF9800, #f57c00);
+            width: 100%;
+        }
+        
+        .nutrition-btn:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 8px 20px rgba(255, 152, 0, 0.4);
+        }
+        
+        /* Pour le glow effect */
+        .glow {
+            animation: glowEffect 2s ease-in-out;
+            position: relative;
+        }
+        
+        @keyframes glowEffect {
+            0% { 
+                box-shadow: 0 0 10px rgba(231, 57, 70, 0.3);
+            }
+            50% { 
+                box-shadow: 0 0 30px rgba(231, 57, 70, 0.7), 0 0 40px rgba(231, 57, 70, 0.5);
+            }
+            100% { 
+                box-shadow: 0 0 10px rgba(231, 57, 70, 0.3);
+            }
+        }
+        
         /* Section Avantages */
         .advantages-section {
             background-color: var(--light);
@@ -1532,6 +1728,26 @@
                 padding: 15px 30px;
                 font-size: 1.3rem;
             }
+            
+            .coaching-content, .nutrition-content {
+                flex-direction: column;
+            }
+            
+            .coaching-image, .nutrition-image {
+                order: 1;
+            }
+            
+            .coaching-info, .nutrition-info {
+                order: 2;
+            }
+            
+            .nutrition-content .nutrition-image {
+                order: 2;
+            }
+            
+            .nutrition-content .nutrition-info {
+                order: 1;
+            }
         }
         
         @media (max-width: 576px) {
@@ -1608,6 +1824,8 @@
                     <li><a href="#home" class="active">Accueil</a></li>
                     <li><a href="#products">Produits</a></li>
                     <li><a href="#services">Services</a></li>
+                    <li><a href="#coaching">Coaching en ligne</a></li>
+                    <li><a href="#programmes-alimentaires">Programmes alimentaires</a></li>
                     <li><a href="#advantages">Avantages</a></li>
                     <li><a href="#contact">Contact</a></li>
                 </ul>
@@ -1697,6 +1915,108 @@
             
             <div class="services-grid" id="services-grid">
                 <!-- Les services seront générés par JavaScript -->
+            </div>
+        </div>
+    </section>
+
+    <!-- Section Coaching en ligne personnalisé -->
+    <section class="coaching-section" id="coaching">
+        <div class="container">
+            <div class="section-title">
+                <h2>COACHING EN LIGNE PERSONNALISÉ</h2>
+                <p>Un accompagnement sur mesure pour atteindre vos objectifs fitness</p>
+            </div>
+            
+            <div class="coaching-content">
+                <div class="coaching-image">
+                    <img src="https://images.unsplash.com/photo-1534438327276-14e5300c3a48?ixlib=rb-4.0.3&auto=format&fit=crop&w=1000&q=80" alt="Coaching en ligne personnalisé">
+                </div>
+                <div class="coaching-info">
+                    <h3>Transformez votre corps avec un coaching 100% personnalisé</h3>
+                    <p>Notre service de coaching en ligne vous offre un accompagnement complet et personnalisé pour atteindre vos objectifs fitness. Que vous cherchiez à perdre du poids, prendre de la masse musculaire ou simplement améliorer votre condition physique, notre coach certifié vous guidera pas à pas.</p>
+                    
+                    <div class="coaching-features">
+                        <div class="coaching-feature">
+                            <i class="fas fa-check-circle"></i>
+                            <span>Programme d'entraînement personnalisé</span>
+                        </div>
+                        <div class="coaching-feature">
+                            <i class="fas fa-check-circle"></i>
+                            <span>Plan nutritionnel sur mesure</span>
+                        </div>
+                        <div class="coaching-feature">
+                            <i class="fas fa-check-circle"></i>
+                            <span>Suivi hebdomadaire via WhatsApp</span>
+                        </div>
+                        <div class="coaching-feature">
+                            <i class="fas fa-check-circle"></i>
+                            <span>Réajustements selon vos progrès</span>
+                        </div>
+                        <div class="coaching-feature">
+                            <i class="fas fa-check-circle"></i>
+                            <span>Support motivationnel quotidien</span>
+                        </div>
+                    </div>
+                    
+                    <div class="coaching-price">
+                        <h4>À partir de <span>499 MAD/mois</span></h4>
+                    </div>
+                    
+                    <button class="btn coaching-btn">
+                        <i class="fab fa-whatsapp"></i> Commencer mon coaching
+                    </button>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Section Programmes alimentaires personnalisés -->
+    <section class="nutrition-section" id="programmes-alimentaires">
+        <div class="container">
+            <div class="section-title">
+                <h2>PROGRAMMES ALIMENTAIRES PERSONNALISÉS</h2>
+                <p>Des plans nutritionnels adaptés à votre métabolisme et vos objectifs</p>
+            </div>
+            
+            <div class="nutrition-content">
+                <div class="nutrition-info">
+                    <h3>Une alimentation sur mesure pour des résultats optimaux</h3>
+                    <p>Notre service de programmes alimentaires personnalisés vous aide à optimiser votre nutrition pour atteindre vos objectifs plus rapidement. Nous prenons en compte votre métabolisme, vos préférences alimentaires et votre mode de vie pour créer un plan parfaitement adapté.</p>
+                    
+                    <div class="nutrition-features">
+                        <div class="nutrition-feature">
+                            <i class="fas fa-check-circle"></i>
+                            <span>Analyse complète de votre métabolisme</span>
+                        </div>
+                        <div class="nutrition-feature">
+                            <i class="fas fa-check-circle"></i>
+                            <span>Plan alimentaire sur mesure (hebdomadaire/mensuel)</span>
+                        </div>
+                        <div class="nutrition-feature">
+                            <i class="fas fa-check-circle"></i>
+                            <span>Listes de courses personnalisées</span>
+                        </div>
+                        <div class="nutrition-feature">
+                            <i class="fas fa-check-circle"></i>
+                            <span>Recettes adaptées à vos goûts</span>
+                        </div>
+                        <div class="nutrition-feature">
+                            <i class="fas fa-check-circle"></i>
+                            <span>Suivi et ajustements réguliers</span>
+                        </div>
+                    </div>
+                    
+                    <div class="nutrition-price">
+                        <h4>À partir de <span>399 MAD/mois</span></h4>
+                    </div>
+                    
+                    <button class="btn nutrition-btn">
+                        <i class="fab fa-whatsapp"></i> Obtenir mon programme alimentaire
+                    </button>
+                </div>
+                <div class="nutrition-image">
+                    <img src="https://images.unsplash.com/photo-1490818387583-1baba5e638af?ixlib=rb-4.0.3&auto=format&fit=crop&w=1000&q=80" alt="Programmes alimentaires personnalisés">
+                </div>
             </div>
         </div>
     </section>
@@ -1818,6 +2138,8 @@
                     <h4>Informations</h4>
                     <ul>
                         <li><a href="#services">Nos Services</a></li>
+                        <li><a href="#coaching">Coaching en ligne</a></li>
+                        <li><a href="#programmes-alimentaires">Programmes alimentaires</a></li>
                         <li><a href="#advantages">Avantages</a></li>
                         <li><a href="#contact">Contactez-nous</a></li>
                         <li><a href="#">Livraison & Retours</a></li>
@@ -3623,6 +3945,72 @@
                     }, 3000);
                 });
             }
+            
+            // إضافة فعالية للروابط الجديدة
+            document.querySelectorAll('a[href="#coaching"]').forEach(link => {
+                link.addEventListener('click', function(e) {
+                    e.preventDefault();
+                    const coachingSection = document.getElementById('coaching');
+                    coachingSection.scrollIntoView({ behavior: 'smooth' });
+                    coachingSection.classList.add('glow');
+                    
+                    // إزالة التوهج بعد 3 ثوان
+                    setTimeout(() => {
+                        coachingSection.classList.remove('glow');
+                    }, 3000);
+                    
+                    // إغلاق القائمة المتنقلة على الهواتف
+                    const nav = document.querySelector('nav');
+                    const mobileMenuBtn = document.querySelector('.mobile-menu-btn');
+                    if (nav && mobileMenuBtn && nav.classList.contains('active')) {
+                        nav.classList.remove('active');
+                        mobileMenuBtn.innerHTML = '<i class="fas fa-bars"></i>';
+                    }
+                });
+            });
+
+            document.querySelectorAll('a[href="#programmes-alimentaires"]').forEach(link => {
+                link.addEventListener('click', function(e) {
+                    e.preventDefault();
+                    const nutritionSection = document.getElementById('programmes-alimentaires');
+                    nutritionSection.scrollIntoView({ behavior: 'smooth' });
+                    nutritionSection.classList.add('glow');
+                    
+                    // إزالة التوهج بعد 3 ثوان
+                    setTimeout(() => {
+                        nutritionSection.classList.remove('glow');
+                    }, 3000);
+                    
+                    // إغلاق القائمة المتنقلة على الهواتف
+                    const nav = document.querySelector('nav');
+                    const mobileMenuBtn = document.querySelector('.mobile-menu-btn');
+                    if (nav && mobileMenuBtn && nav.classList.contains('active')) {
+                        nav.classList.remove('active');
+                        mobileMenuBtn.innerHTML = '<i class="fas fa-bars"></i>';
+                    }
+                });
+            });
+
+            // إضافة فعالية لأزرار الاشتراك
+            document.querySelectorAll('.coaching-btn').forEach(btn => {
+                btn.addEventListener('click', function() {
+                    const service = {
+                        title: "Coaching en ligne personnalisé",
+                        price: "499 MAD/mois"
+                    };
+                    orderServiceViaWhatsApp(service);
+                });
+            });
+
+            document.querySelectorAll('.nutrition-btn').forEach(btn => {
+                btn.addEventListener('click', function() {
+                    const service = {
+                        title: "Programmes alimentaires personnalisés",
+                        price: "399 MAD/mois"
+                    };
+                    orderServiceViaWhatsApp(service);
+                });
+            });
             
             // Phrases de motivation aléatoires
             const motivations = [
